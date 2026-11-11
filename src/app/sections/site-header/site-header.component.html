@@ -1,0 +1,53 @@
+<header class="header" [class.is-compact]="scroll.compact()">
+  <div class="row">
+    <a class="brand" href="#home" [attr.aria-label]="'header.home' | t">
+      <img
+        class="logo"
+        src="images/logo-144.png"
+        alt="Belmont Group Angus Farms"
+        width="243"
+        height="144"
+        fetchpriority="high"
+      />
+    </a>
+    <nav class="nav" [attr.aria-label]="'header.navLabel' | t">
+      @for (link of links(); track link.id) {
+        <a
+          class="nav-link"
+          [class.is-current]="link.current"
+          [href]="link.href"
+          [attr.aria-current]="link.current ? 'true' : 'false'"
+          >{{ link.labelKey | t }}</a
+        >
+      }
+    </nav>
+    <div class="controls">
+      <div class="lang" role="group" [attr.aria-label]="'header.langLabel' | t">
+        @for (loc of locales; track loc.code) {
+          <button
+            type="button"
+            class="lang-btn"
+            [class.is-active]="loc.code === i18n.locale()"
+            [attr.aria-pressed]="loc.code === i18n.locale() ? 'true' : 'false'"
+            [attr.aria-label]="loc.name"
+            [attr.lang]="loc.code"
+            (click)="pick(loc.code)"
+          >
+            {{ loc.label }}
+          </button>
+        }
+      </div>
+      <a class="cta" href="#contact">{{ 'header.cta' | t }}</a>
+    </div>
+  </div>
+  <div
+    class="progress"
+    role="progressbar"
+    [attr.aria-label]="'header.progressLabel' | t"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    [attr.aria-valuenow]="progressNow()"
+  >
+    <div class="progress-fill" [style.width.%]="scroll.progress()"></div>
+  </div>
+</header>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Echipa noastră</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="team" data-component="app-team" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #E9EBDF; padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(36px, 4vw, 48px)">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #7A5325">{{t.kicker}}</p>
+<h2 style="margin: 0; max-width: 820px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.04; letter-spacing: -0.01em; color: #24382A; text-wrap: balance">{{t.title}}</h2>
+<p style="margin: 0; max-width: 760px; font-size: 18px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.intro}}</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px">
+<sc-for list="{{t.members}}" as="member" hint-placeholder-count="3">
+<article style="display: flex; flex-direction: column; gap: 20px; padding: 28px; background: #FBF8F1; border: 1px solid rgba(28, 35, 28, 0.14)">
+<div style="display: flex; align-items: center; justify-content: center; width: 96px; height: 96px; border: 1px dashed #566052; border-radius: 50%; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #566052">{{t.photoPlaceholder}}</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #7A5325">{{member.area}}</p>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 30px; line-height: 1.1; color: #24382A">{{member.name}}</h3>
+<p style="margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; color: #3A4438">{{member.role}}</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #566052">{{t.bioPlaceholder}}</p>
+</div>
+</article>
+</sc-for>
+</div>
+<p style="margin: 0; padding-top: 20px; border-top: 1px solid rgba(28, 35, 28, 0.2); font-size: 16px; line-height: 1.6; color: #3A4438">{{t.admin}}</p>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":800}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-team"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+i18n() {
+return {
+ro: {
+kicker: 'Echipa noastră',
+title: 'Ghidați de o echipă de conducere dedicată.',
+intro: 'Belmont Group este condus de o echipă restrânsă și sprijinit de personal de fermă cu experiență, în cele trei locații ale noastre din Transilvania.',
+photoPlaceholder: '[FOTO]',
+bioPlaceholder: '[SCURTĂ BIOGRAFIE]',
+members: [
+{ area: 'Direcție strategică', name: '[NUME]', role: 'Proprietar / Director general' },
+{ area: 'Glâmboaca și Colun', name: 'Nicu Tămășel', role: 'Șef de fermă' },
+{ area: 'Săsăuș', name: 'Liviu Muntean', role: 'Șef de fermă' }
+],
+admin: 'Administrație și servicii centrale: Anca Anghelini, Alina Denghel.'
+},
+en: {
+kicker: 'Our team',
+title: 'Guided by a dedicated leadership team.',
+intro: 'The Belmont Group is guided by a small leadership team and supported by experienced farm staff across our three locations in Transylvania.',
+photoPlaceholder: '[PHOTO]',
+bioPlaceholder: '[SHORT BIO]',
+members: [
+{ area: 'Strategic direction', name: '[NAME]', role: 'Owner / Managing Director' },
+{ area: 'Glâmboaca & Colun', name: 'Nicu Tămășel', role: 'Farm Manager' },
+{ area: 'Săsăuș', name: 'Liviu Muntean', role: 'Farm Manager' }
+],
+admin: 'Administration and central services: Anca Anghelini, Alina Denghel.'
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+return { t: all[this.props.locale] || all.ro, reveal: this.reveal() };
+}
+}
+</script>
+</body>
+</html>

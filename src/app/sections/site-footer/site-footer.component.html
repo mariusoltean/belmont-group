@@ -1,0 +1,19 @@
+<footer class="footer on-dark">
+  <div class="inner">
+    <div class="top">
+      <div class="wordmark">
+        <p class="name">Belmont Group</p>
+        <p class="sub">Angus Farms</p>
+      </div>
+      <nav class="nav" [attr.aria-label]="'footer.navLabel' | t">
+        @for (id of links; track id) {
+          <a class="nav-link" [href]="'#' + id">{{ 'footer.nav.' + id | t }}</a>
+        }
+      </nav>
+    </div>
+    <div class="bottom">
+      <p class="small">{{ 'footer.rights' | t }}</p>
+      <p class="small">{{ 'footer.address' | t }}</p>
+    </div>
+  </div>
+</footer>

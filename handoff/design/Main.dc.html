@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Angus crescut pe pășune, în Transilvania</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+html{scroll-behavior:smooth}
+</style>
+</helmet>
+<div data-component="app-root" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #F6F1E6">
+<div style="position: sticky; top: 0; z-index: 20">
+<dc-import name="SiteHeader" locale="{{locale}}" on-locale-change="{{setLocale}}" hint-size="100%,92px"></dc-import>
+</div>
+<main>
+<dc-import name="Hero" locale="{{locale}}" hint-size="100%,920px"></dc-import>
+<dc-import name="About" locale="{{locale}}" hint-size="100%,640px"></dc-import>
+<dc-import name="Philosophy" locale="{{locale}}" hint-size="100%,600px"></dc-import>
+<dc-import name="Products" locale="{{locale}}" hint-size="100%,700px"></dc-import>
+<dc-import name="Angus" locale="{{locale}}" hint-size="100%,1320px"></dc-import>
+<dc-import name="Team" locale="{{locale}}" hint-size="100%,760px"></dc-import>
+<dc-import name="Region" locale="{{locale}}" hint-size="100%,920px"></dc-import>
+<dc-import name="Gallery" locale="{{locale}}" hint-size="100%,1040px"></dc-import>
+<dc-import name="Contact" locale="{{locale}}" hint-size="100%,680px"></dc-import>
+</main>
+<dc-import name="SiteFooter" locale="{{locale}}" hint-size="100%,240px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"defaultLocale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":8000}}'>
+class Component extends DCLogic {
+state = { locale: null };
+componentDidUpdate() {
+const l = (this.state && this.state.locale) || this.props.defaultLocale || 'ro';
+if (typeof document !== 'undefined') document.documentElement.lang = l;
+}
+renderVals() {
+const locale = (this.state && this.state.locale) || this.props.defaultLocale || 'ro';
+return {
+locale: locale,
+setLocale: (l) => this.setState({ locale: l })
+};
+}
+}
+</script>
+</body>
+</html>

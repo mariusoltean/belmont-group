@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Contact</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="contact" data-component="app-contact" style="font-family: Figtree, system-ui, sans-serif; color: #F6F1E6; background: #24382A; padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(40px, 5vw, 72px); align-items: start">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #D9B47A">{{t.kicker}}</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.04; letter-spacing: -0.01em; color: #F6F1E6; text-wrap: balance">{{t.title}}</h2>
+<p style="margin: 0; max-width: 480px; font-size: 18px; line-height: 1.65; color: #DDE2D6; text-wrap: pretty">{{t.intro}}</p>
+<dl style="margin: 16px 0 0; display: flex; flex-direction: column">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 16px 0; border-top: 1px solid rgba(246, 241, 230, 0.22)">
+<dt style="flex: 0 0 96px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 26px; color: #D9B47A">{{t.emailLabel}}</dt>
+<dd style="margin: 0; font-size: 17px; line-height: 26px; color: #F6F1E6">{{t.emailValue}}</dd>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 16px 0; border-top: 1px solid rgba(246, 241, 230, 0.22)">
+<dt style="flex: 0 0 96px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 26px; color: #D9B47A">{{t.phoneLabel}}</dt>
+<dd style="margin: 0; font-size: 17px; line-height: 26px; color: #F6F1E6">{{t.phoneValue}}</dd>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 16px 0; border-top: 1px solid rgba(246, 241, 230, 0.22); border-bottom: 1px solid rgba(246, 241, 230, 0.22)">
+<dt style="flex: 0 0 96px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 26px; color: #D9B47A">{{t.addressLabel}}</dt>
+<dd style="margin: 0; font-size: 17px; line-height: 26px; color: #F6F1E6">{{t.addressValue}}</dd>
+</div>
+</dl>
+</div>
+<form onSubmit="{{submit}}" aria-label="{{t.formTitle}}" style="display: flex; flex-direction: column; gap: 22px; padding: clamp(24px, 3vw, 40px); background: rgba(246, 241, 230, 0.06); border: 1px solid rgba(246, 241, 230, 0.18)">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 30px; line-height: 1.1; color: #F6F1E6">{{t.formTitle}}</h3>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="contact-name" style="font-size: 14px; font-weight: 600; color: #DDE2D6">{{t.name}}</label>
+<input id="contact-name" name="name" type="text" autocomplete="name" required style="box-sizing: border-box; width: 100%; height: 48px; padding: 0 14px; border: 1px solid rgba(246, 241, 230, 0.45); border-radius: 2px; background: transparent; color: #F6F1E6; font: inherit; font-size: 16px">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="contact-email" style="font-size: 14px; font-weight: 600; color: #DDE2D6">{{t.email}}</label>
+<input id="contact-email" name="email" type="email" autocomplete="email" required style="box-sizing: border-box; width: 100%; height: 48px; padding: 0 14px; border: 1px solid rgba(246, 241, 230, 0.45); border-radius: 2px; background: transparent; color: #F6F1E6; font: inherit; font-size: 16px">
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="contact-message" style="font-size: 14px; font-weight: 600; color: #DDE2D6">{{t.message}}</label>
+<textarea id="contact-message" name="message" rows="5" required style="box-sizing: border-box; width: 100%; min-height: 132px; padding: 12px 14px; border: 1px solid rgba(246, 241, 230, 0.45); border-radius: 2px; background: transparent; color: #F6F1E6; font: inherit; font-size: 16px; line-height: 1.5; resize: vertical"></textarea>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<button type="submit" style="height: 52px; padding: 0 28px; border: 0; border-radius: 2px; background: #D9B47A; color: #1C231C; font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer">{{t.send}}</button>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<p role="status" style="margin: 0; font-size: 15px; line-height: 1.5; color: #F6F1E6">{{t.sent}}</p>
+</sc-if>
+</div>
+</form>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":720}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-contact"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+state = { sent: false };
+i18n() {
+return {
+ro: {
+kicker: 'Contact',
+title: 'Luați legătura cu noi.',
+intro: 'Așteptăm solicitări de la cumpărători, comercianți, parteneri agricoli și de la oricine dorește să afle mai multe despre Belmont Group.',
+emailLabel: 'E-mail',
+emailValue: '[ADRESĂ DE E-MAIL]',
+phoneLabel: 'Telefon',
+phoneValue: '[NUMĂR DE TELEFON — opțional]',
+addressLabel: 'Adresă',
+addressValue: 'Belmont Group, Sibiu, România',
+formTitle: 'Formular de contact',
+name: 'Nume',
+email: 'E-mail',
+message: 'Mesaj',
+send: 'Trimite mesajul',
+sent: 'Mulțumim! Mesajul a fost trimis.'
+},
+en: {
+kicker: 'Contact',
+title: 'Get in touch.',
+intro: 'We welcome enquiries from buyers, traders, farming partners, and anyone interested in learning more about Belmont Group.',
+emailLabel: 'Email',
+emailValue: '[EMAIL ADDRESS]',
+phoneLabel: 'Phone',
+phoneValue: '[PHONE NUMBER — optional]',
+addressLabel: 'Address',
+addressValue: 'Belmont Group, Sibiu, Romania',
+formTitle: 'Contact form',
+name: 'Name',
+email: 'Email',
+message: 'Message',
+send: 'Send message',
+sent: 'Thank you! Your message has been sent.'
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+return {
+reveal: this.reveal(),
+t: all[this.props.locale] || all.ro,
+sent: !!(this.state && this.state.sent),
+submit: (e) => {
+if (e && e.preventDefault) e.preventDefault();
+this.setState({ sent: true });
+}
+};
+}
+}
+</script>
+</body>
+</html>

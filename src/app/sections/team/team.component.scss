@@ -1,0 +1,95 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-sage));
+}
+
+.inner {
+  @include s.container;
+  @include s.stack(clamp(36px, 4vw, 48px));
+}
+
+.intro {
+  @include s.stack(20px);
+}
+
+.kicker {
+  @include s.kicker(var(--color-bronze-on-sage));
+}
+
+.title {
+  @include s.h2;
+  max-width: 820px;
+}
+
+.body {
+  @include s.body(18px);
+  max-width: 760px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
+}
+
+.card {
+  @include s.stack(20px);
+  padding: 28px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+}
+
+.photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border: 1px dashed var(--color-muted);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.card-body {
+  @include s.stack(8px);
+}
+
+.area {
+  @include s.label(var(--color-bronze-on-sage));
+}
+
+.name {
+  @include s.card-title(30px);
+}
+
+.role {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.bio {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.admin {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(28, 35, 28, 0.2);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+}

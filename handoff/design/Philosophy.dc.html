@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Filosofia noastră</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="philosophy" data-component="app-philosophy" style="font-family: Figtree, system-ui, sans-serif; color: #F6F1E6; background: #24382A; padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: start">
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 24px">
+<svg aria-hidden="true" width="56" height="2" viewBox="0 0 56 2"><rect width="56" height="2" fill="#D9B47A"></rect></svg>
+<blockquote style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(30px, 3.6vw, 50px); line-height: 1.14; color: #F6F1E6; text-wrap: balance">{{t.quote}}</blockquote>
+</figure>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #D9B47A">{{t.kicker}}</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.06; color: #F6F1E6; text-wrap: balance">{{t.title}}</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #DDE2D6; text-wrap: pretty">{{t.p1}}</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #DDE2D6; text-wrap: pretty">{{t.p2}}</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #DDE2D6; text-wrap: pretty">{{t.p3}}</p>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":640}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-philosophy"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+i18n() {
+return {
+ro: {
+quote: '„Ceea ce mănâncă bovinele noastre le determină sănătatea. Sănătatea lor determină calitatea cărnii.”',
+kicker: 'Filosofia noastră',
+title: 'Înapoi la ceea ce este autentic.',
+p1: 'La Belmont Group credem în agricultura extensivă, de intensitate redusă. Vara, bovinele noastre pasc exclusiv iarbă proaspătă. Iarna sunt hrănite cu fân și siloz produse în întregime pe terenurile noastre.',
+p2: 'Bovinele care trăiesc în aer liber, se mișcă în voie și se hrănesc de pe pășuni naturale dau o carne onestă: bogată în nutrienți, ușor de digerat și cu adevărat naturală, în cel mai bun sens al cuvântului.',
+p3: 'Belmont Group se angajează să gestioneze terenurile responsabil, cumpătat și la un nivel înalt de calitate, cu accent pe producția de hrană.'
+},
+en: {
+quote: '“What our cattle eat determines their health. Their health determines the quality of the meat.”',
+kicker: 'Our philosophy',
+title: 'Going back to what is real.',
+p1: 'At Belmont Group, we believe in extensive, low-intensity farming. In summer, our cattle graze exclusively on fresh grass. In winter, they are fed hay and silage grown entirely on our own land.',
+p2: 'Cattle that live outdoors, move freely, and feed on natural pasture produce beef that is honest: nutrient-rich, easy to digest, and truly natural in the best sense of the word.',
+p3: 'Belmont Group is committed to responsible, measured, and high-quality land management with a focus on food production.'
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+return { t: all[this.props.locale] || all.ro, reveal: this.reveal() };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Antet</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<header data-component="app-site-header" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: rgba(246, 241, 230, 0.95); backdrop-filter: blur(14px); box-shadow: {{shadow}}; transition: box-shadow 0.25s ease">
+<div style="max-width: 1160px; margin: 0 auto; padding: {{padY}} clamp(20px, 5vw, 40px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 32px; transition: padding 0.25s ease">
+<a href="#home" aria-label="{{t.home}}" style="display: flex; align-items: center; text-decoration: none">
+<img src="assets/images/logo.png" alt="Belmont Group Angus Farms" style="display: block; height: {{logoHeight}}; width: auto; transition: height 0.25s ease">
+</a>
+<nav aria-label="{{t.navLabel}}" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0 28px; flex: 1 1 auto; justify-content: center">
+<sc-for list="{{links}}" as="link" hint-placeholder-count="5">
+<a href="{{link.href}}" aria-current="{{link.current}}" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 500; color: {{link.color}}; box-shadow: inset 0 -2px 0 {{link.underline}}; text-decoration: none; white-space: nowrap; transition: color 0.2s ease, box-shadow 0.2s ease">{{link.label}}</a>
+</sc-for>
+</nav>
+<div style="display: flex; align-items: center; gap: 16px">
+<div role="group" aria-label="{{t.langLabel}}" style="display: flex; gap: 2px; padding: 3px; border: 1px solid rgba(28, 35, 28, 0.22); border-radius: 999px">
+<sc-for list="{{locales}}" as="loc" hint-placeholder-count="2">
+<button type="button" onClick="{{loc.pick}}" aria-pressed="{{loc.pressed}}" aria-label="{{loc.name}}" lang="{{loc.code}}" style="min-width: 44px; height: 38px; padding: 0 12px; border: 0; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; background: {{loc.bg}}; color: {{loc.fg}}; transition: background 0.2s ease, color 0.2s ease">{{loc.label}}</button>
+</sc-for>
+</div>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 2px; background: #24382A; color: #F6F1E6; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; white-space: nowrap">{{t.cta}}</a>
+</div>
+</div>
+<div role="progressbar" aria-label="{{t.progressLabel}}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{progressNow}}" style="height: 3px; background: rgba(28, 35, 28, 0.12)">
+<div style="height: 3px; width: {{progressWidth}}; background: #8A5F2B; transition: width 0.12s linear"></div>
+</div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"previewProgress":{"editor":"range","min":0,"max":100,"step":1,"unit":"%","default":0,"section":"Scroll progress"},"onLocaleChange":{"editor":null},"$preview":{"width":1440,"height":100}}'>
+class Component extends DCLogic {
+state = { locale: null, progress: 0, active: '', compact: false };
+sectionIds() {
+return ['about', 'philosophy', 'products', 'angus', 'gallery'];
+}
+componentDidMount() {
+if (typeof window === 'undefined') return;
+this.onScroll = () => {
+if (this.ticking) return;
+this.ticking = true;
+window.requestAnimationFrame(() => {
+this.ticking = false;
+this.measure();
+});
+};
+window.addEventListener('scroll', this.onScroll, { passive: true });
+window.addEventListener('resize', this.onScroll);
+this.measure();
+}
+componentWillUnmount() {
+if (typeof window === 'undefined' || !this.onScroll) return;
+window.removeEventListener('scroll', this.onScroll);
+window.removeEventListener('resize', this.onScroll);
+}
+measure() {
+const doc = document.scrollingElement || document.documentElement;
+const max = doc.scrollHeight - window.innerHeight;
+const y = window.scrollY || doc.scrollTop || 0;
+const progress = max > 0 ? Math.round(Math.min(1, Math.max(0, y / max)) * 1000) / 10 : 0;
+let active = '';
+this.sectionIds().forEach((id) => {
+const el = document.getElementById(id);
+if (el && el.getBoundingClientRect().top <= 160) active = id;
+});
+const compact = y > 24;
+const s = this.state || {};
+if (s.progress !== progress || s.active !== active || s.compact !== compact) {
+this.setState({ progress: progress, active: active, compact: compact });
+}
+}
+i18n() {
+return {
+ro: {
+home: 'Belmont Group — acasă',
+navLabel: 'Navigare principală',
+langLabel: 'Limbă',
+progressLabel: 'Progresul citirii paginii',
+cta: 'Contact',
+nav: { about: 'Cine suntem', philosophy: 'Filosofie', products: 'Produse', angus: 'Rasa Angus', gallery: 'Galerie' }
+},
+en: {
+home: 'Belmont Group — home',
+navLabel: 'Main navigation',
+langLabel: 'Language',
+progressLabel: 'Page reading progress',
+cta: 'Contact',
+nav: { about: 'Who we are', philosophy: 'Philosophy', products: 'Products', angus: 'Angus beef', gallery: 'Gallery' }
+}
+};
+}
+renderVals() {
+const s = this.state || {};
+const locale = s.locale || this.props.locale || 'ro';
+const t = this.i18n()[locale] || this.i18n().ro;
+const pick = (code) => () => {
+this.setState({ locale: code });
+if (typeof this.props.onLocaleChange === 'function') this.props.onLocaleChange(code);
+};
+const names = { ro: 'Română', en: 'English' };
+const progress = Math.max(s.progress || 0, Number(this.props.previewProgress) || 0);
+return {
+t: t,
+logoHeight: s.compact ? '52px' : '72px',
+padY: s.compact ? '6px' : '10px',
+shadow: s.compact ? '0 8px 24px rgba(28, 35, 28, 0.10)' : '0 0 0 rgba(28, 35, 28, 0)',
+progressWidth: progress + '%',
+progressNow: String(Math.round(progress)),
+links: this.sectionIds().map((id) => ({
+href: '#' + id,
+label: t.nav[id],
+current: id === s.active ? 'true' : 'false',
+color: id === s.active ? '#24382A' : '#3A4438',
+underline: id === s.active ? '#8A5F2B' : 'transparent'
+})),
+locales: ['ro', 'en'].map((code) => ({
+code: code,
+label: code.toUpperCase(),
+name: names[code],
+pick: pick(code),
+pressed: code === locale ? 'true' : 'false',
+bg: code === locale ? '#24382A' : 'transparent',
+fg: code === locale ? '#F6F1E6' : '#3A4438'
+}))
+};
+}
+}
+</script>
+</body>
+</html>

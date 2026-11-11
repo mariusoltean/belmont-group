@@ -1,0 +1,143 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.hero {
+  font-family: var(--font-text);
+  color: var(--color-ink);
+  background: var(--color-cream);
+  padding: clamp(40px, 5vw, 72px) var(--section-pad-x) clamp(48px, 5vw, 64px);
+  scroll-margin-top: var(--header-offset);
+}
+
+.inner {
+  @include s.container;
+  @include s.stack(clamp(40px, 5vw, 64px));
+}
+
+.split {
+  @include s.two-col;
+  align-items: center;
+}
+
+.text {
+  @include s.stack(24px);
+  align-items: flex-start;
+}
+
+.eyebrow {
+  @include s.kicker;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-h1);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--color-forest);
+  text-wrap: balance;
+}
+
+.lead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: var(--text-lead);
+  line-height: 1.25;
+  color: var(--color-forest);
+}
+
+.copy {
+  @include s.body(18px);
+  max-width: 540px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-top: 8px;
+}
+
+.btn-primary {
+  @include s.button-primary;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-forest);
+  text-decoration: underline;
+  text-decoration-color: var(--color-bronze);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+.photo {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 45% 50%;
+    animation: hero-settle var(--hero-zoom-duration) var(--hero-zoom-ease) both;
+  }
+}
+
+// Photo settles from 1.1 to 1 on load (CSS, so the prerendered page animates without JS).
+@keyframes hero-settle {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo img {
+    animation: none;
+  }
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 32px 40px;
+}
+
+.fact {
+  @include s.stack(10px);
+  padding-top: 20px;
+  border-top: 1px solid var(--color-ink);
+}
+
+.fact-no {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-bronze);
+}
+
+.fact-title {
+  @include s.card-title(28px);
+}
+
+.fact-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+}

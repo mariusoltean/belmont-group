@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Produse</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="products" data-component="app-products" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #F6F1E6; padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: start">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A5F2B">{{t.kicker}}</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.04; letter-spacing: -0.01em; color: #24382A; text-wrap: balance">{{t.title}}</h2>
+<p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.25; color: #24382A">{{t.lead}}</p>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 28px">
+<ol style="margin: 0; padding: 0; list-style: none; width: 100%; display: flex; flex-direction: column; border-bottom: 1px solid rgba(28, 35, 28, 0.14)">
+<sc-for list="{{items}}" as="item" hint-placeholder-count="3">
+<li style="display: flex; align-items: baseline; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(28, 35, 28, 0.14)">
+<span style="flex: 0 0 32px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #8A5F2B">{{item.no}}</span>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 28px; line-height: 1.1; color: #24382A">{{item.title}}</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4438">{{item.text}}</p>
+</div>
+</li>
+</sc-for>
+</ol>
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #566052; text-wrap: pretty">{{t.note}}</p>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 2px; background: #24382A; color: #F6F1E6; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none">{{t.cta}}</a>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":740}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-products"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+i18n() {
+return {
+ro: {
+kicker: 'Produse',
+title: 'Din propriul nostru program de reproducție.',
+lead: '„Carne născută pe pășune, crescută cu respect.”',
+items: [
+{ title: 'Tăurași înțărcați robuști', text: 'Tineret gata pentru finisare.' },
+{ title: 'Juninci de reproducție selecționate', text: 'Animale de calitate superioară, din efectivul propriu.' },
+{ title: 'Vaci de reformă', text: 'Retrase din cireada de reproducție.' }
+],
+note: 'Prețul reflectă calitatea fiecărui animal, greutatea în viu și cotațiile curente ale pieței. Animalele sunt disponibile, de regulă, sezonier. Așteptăm solicitări de la fermieri, comercianți și cumpărători din întreaga Europă.',
+cta: 'Întreabă despre disponibilitate'
+},
+en: {
+kicker: 'Products',
+title: 'From our own breeding programme.',
+lead: '“Beef born on pasture, raised with respect.”',
+items: [
+{ title: 'Robust male weaners', text: 'Store cattle ready for further finishing.' },
+{ title: 'Selected female breeding heifers', text: 'High-quality animals from our own stock.' },
+{ title: 'Cull cows', text: 'Retired from the breeding herd.' }
+],
+note: 'Pricing reflects the individual animal\'s quality, live weight, and current market rates. Animals are typically available seasonally. We welcome enquiries from farmers, traders, and buyers across Europe.',
+cta: 'Enquire about availability'
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+const t = all[this.props.locale] || all.ro;
+return {
+reveal: this.reveal(),
+t: t,
+items: t.items.map((it, i) => ({ no: '0' + (i + 1), title: it.title, text: it.text }))
+};
+}
+}
+</script>
+</body>
+</html>

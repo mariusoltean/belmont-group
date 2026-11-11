@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — România și Transilvania</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="region" data-component="app-region" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #F6F1E6; padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(40px, 5vw, 72px); align-items: start">
+<article style="display: flex; flex-direction: column; gap: 20px">
+<img src="assets/images/photo-11.jpg" alt="{{t.romania.imageAlt}}" style="display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; margin-bottom: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A5F2B">{{t.romania.kicker}}</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.06; color: #24382A; text-wrap: balance">{{t.romania.title}}</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.romania.p1}}</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.romania.p2}}</p>
+</article>
+<article style="display: flex; flex-direction: column; gap: 20px">
+<img src="assets/images/photo-14.jpg" alt="{{t.transylvania.imageAlt}}" style="display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; margin-bottom: 8px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A5F2B">{{t.transylvania.kicker}}</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.06; color: #24382A; text-wrap: balance">{{t.transylvania.title}}</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.transylvania.p1}}</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.transylvania.p2}}</p>
+</article>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-region"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+i18n() {
+return {
+ro: {
+romania: {
+kicker: 'România',
+title: 'O țară dinamică, cu rădăcini agricole adânci.',
+p1: 'România este o țară dinamică din Europa de Est, cu o istorie bogată, o economie în creștere și rădăcini adânci în agricultură. De la aderarea la Uniunea Europeană, în 2007, România a făcut progrese importante în infrastructură, investiții și influență regională.',
+p2: 'Țara are soluri fertile și este un producător agricol important. Creșterea animalelor este larg răspândită și profund înrădăcinată în cultura rurală.',
+imageAlt: 'Vedere peste o vale cu râu, cu munții în zare'
+},
+transylvania: {
+kicker: 'Transilvania',
+title: 'Aer curat, peisaje tradiționale, agricultură naturală.',
+p1: 'Transilvania este una dintre cele mai apreciate regiuni ale României — înconjurată de Munții Carpați și cunoscută pentru moștenirea medievală, istoria multiculturală și peisajele naturale spectaculoase.',
+p2: 'Pentru Belmont Group, Transilvania înseamnă mai mult decât o locație. Aerul curat, peisajul agricol tradițional și folosirea puțin intensivă a terenurilor oferă condiții ideale pentru creșterea extensivă a bovinelor.',
+imageAlt: 'Cireadă odihnindu-se pe pășune, cu munți înzăpeziți în fundal'
+}
+},
+en: {
+romania: {
+kicker: 'Romania',
+title: 'A dynamic country with deep agricultural roots.',
+p1: 'Romania is a dynamic country in Eastern Europe with a rich history, a growing economy, and deep roots in agriculture. Since joining the European Union in 2007, Romania has made significant strides in infrastructure, investment, and regional influence.',
+p2: 'The country has fertile soils and is a major agricultural producer. Livestock farming is widespread and deeply embedded in rural culture.',
+imageAlt: 'View over a river valley with mountains in the distance'
+},
+transylvania: {
+kicker: 'Transylvania',
+title: 'Clean air, traditional landscapes, natural farming.',
+p1: 'Transylvania is one of Romania\'s most celebrated regions — surrounded by the Carpathian Mountains and known for medieval heritage, multicultural history, and breathtaking natural landscapes.',
+p2: 'For Belmont Group, Transylvania represents more than a location. Its clean air, traditional agricultural landscape, and low-intensity land use provide ideal conditions for extensive cattle farming.',
+imageAlt: 'Herd resting on pasture with snow-capped mountains behind'
+}
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+return { t: all[this.props.locale] || all.ro, reveal: this.reveal() };
+}
+}
+</script>
+</body>
+</html>

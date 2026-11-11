@@ -1,0 +1,23 @@
+<section id="team" class="section">
+  <div class="inner" appReveal>
+    <div class="intro">
+      <p class="kicker">{{ 'team.kicker' | t }}</p>
+      <h2 class="title">{{ 'team.title' | t }}</h2>
+      <p class="body">{{ 'team.intro' | t }}</p>
+    </div>
+    <div class="grid">
+      @for (member of members(); track $index) {
+        <article class="card">
+          <div class="photo-placeholder">{{ 'team.photoPlaceholder' | t }}</div>
+          <div class="card-body">
+            <p class="area">{{ member.area }}</p>
+            <h3 class="name">{{ member.name }}</h3>
+            <p class="role">{{ member.role }}</p>
+            <p class="bio">{{ 'team.bioPlaceholder' | t }}</p>
+          </div>
+        </article>
+      }
+    </div>
+    <p class="admin">{{ 'team.admin' | t }}</p>
+  </div>
+</section>

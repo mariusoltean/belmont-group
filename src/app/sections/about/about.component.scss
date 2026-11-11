@@ -1,0 +1,70 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-paper));
+  border-top: 1px solid var(--color-line);
+}
+
+.inner {
+  @include s.container;
+  @include s.two-col;
+  align-items: start;
+}
+
+.col {
+  @include s.stack(20px);
+}
+
+.kicker {
+  @include s.kicker;
+}
+
+.title {
+  @include s.h2;
+}
+
+.farms {
+  @include s.stack(12px);
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-line);
+}
+
+.farms-label {
+  @include s.label;
+}
+
+.farms-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+
+  li {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.2;
+    color: var(--color-forest);
+  }
+}
+
+.body {
+  @include s.body(18px);
+}
+
+.owner {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-line);
+  font-size: 18px;
+  line-height: 1.65;
+  font-weight: 600;
+  color: var(--color-forest);
+}

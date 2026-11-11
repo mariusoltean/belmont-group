@@ -1,0 +1,96 @@
+<section id="contact" class="section on-dark">
+  <div class="inner" appReveal>
+    <div class="col">
+      <p class="kicker">{{ 'contact.kicker' | t }}</p>
+      <h2 class="title">{{ 'contact.title' | t }}</h2>
+      <p class="intro">{{ 'contact.intro' | t }}</p>
+      <dl class="details">
+        <div class="detail">
+          <dt>{{ 'contact.emailLabel' | t }}</dt>
+          <dd>{{ 'contact.emailValue' | t }}</dd>
+        </div>
+        <div class="detail">
+          <dt>{{ 'contact.phoneLabel' | t }}</dt>
+          <dd>{{ 'contact.phoneValue' | t }}</dd>
+        </div>
+        <div class="detail last">
+          <dt>{{ 'contact.addressLabel' | t }}</dt>
+          <dd>{{ 'contact.addressValue' | t }}</dd>
+        </div>
+      </dl>
+    </div>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()" [attr.aria-label]="'contact.formTitle' | t" novalidate>
+      <h3 class="form-title">{{ 'contact.formTitle' | t }}</h3>
+
+      <div class="field">
+        <label for="contact-name">{{ 'contact.name' | t }}</label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          formControlName="name"
+          [attr.aria-invalid]="errorKey('name') ? 'true' : null"
+          [attr.aria-describedby]="errorKey('name') ? 'contact-name-error' : null"
+          (blur)="onBlur()"
+        />
+        @if (errorKey('name'); as key) {
+          <p id="contact-name-error" class="error">{{ key | t }}</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="contact-email">{{ 'contact.email' | t }}</label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          formControlName="email"
+          [attr.aria-invalid]="errorKey('email') ? 'true' : null"
+          [attr.aria-describedby]="errorKey('email') ? 'contact-email-error' : null"
+          (blur)="onBlur()"
+        />
+        @if (errorKey('email'); as key) {
+          <p id="contact-email-error" class="error">{{ key | t }}</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="contact-message">{{ 'contact.message' | t }}</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows="5"
+          required
+          formControlName="message"
+          [attr.aria-invalid]="errorKey('message') ? 'true' : null"
+          [attr.aria-describedby]="errorKey('message') ? 'contact-message-error' : null"
+          (blur)="onBlur()"
+        ></textarea>
+        @if (errorKey('message'); as key) {
+          <p id="contact-message-error" class="error">{{ key | t }}</p>
+        }
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="send" [disabled]="status() === 'sending'">{{ 'contact.send' | t }}</button>
+        <p class="status" role="status">
+          @switch (status()) {
+            @case ('sending') {
+              {{ 'contact.sending' | t }}
+            }
+            @case ('sent') {
+              {{ 'contact.sent' | t }}
+            }
+            @case ('failed') {
+              <span class="error">{{ 'contact.failed' | t }}</span>
+            }
+          }
+        </p>
+      </div>
+    </form>
+  </div>
+</section>

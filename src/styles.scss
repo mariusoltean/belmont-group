@@ -1,0 +1,42 @@
+@use 'styles/tokens';
+
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  color: var(--color-ink);
+  background: var(--color-cream);
+}
+
+// The static design has no focus styles: 2px bronze ring, light variant on dark grounds.
+:focus-visible {
+  outline: 2px solid var(--color-bronze);
+  outline-offset: 2px;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--color-bronze-light);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

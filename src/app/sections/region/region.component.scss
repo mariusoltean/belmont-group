@@ -1,0 +1,40 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-cream));
+}
+
+.inner {
+  @include s.container;
+  @include s.two-col(clamp(40px, 5vw, 72px));
+  align-items: start;
+}
+
+.article {
+  @include s.stack(20px);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.kicker {
+  @include s.kicker;
+}
+
+.title {
+  @include s.h2-small;
+}
+
+.body {
+  @include s.body(17px);
+}

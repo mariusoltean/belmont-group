@@ -1,0 +1,47 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-forest), var(--color-on-dark));
+}
+
+.inner {
+  @include s.container;
+  @include s.two-col;
+  align-items: start;
+}
+
+.quote {
+  margin: 0;
+  @include s.stack(24px);
+
+  blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--text-quote);
+    line-height: 1.14;
+    color: var(--color-on-dark);
+    text-wrap: balance;
+  }
+}
+
+.col {
+  @include s.stack(20px);
+}
+
+.kicker {
+  @include s.kicker(var(--color-bronze-light));
+}
+
+.title {
+  @include s.h2-small(var(--color-on-dark));
+}
+
+.body {
+  @include s.body(17px, var(--color-on-dark-text));
+}

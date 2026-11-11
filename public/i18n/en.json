@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "title": "Belmont Group | Pasture-raised Angus from Transylvania",
+    "description": "Pure-bred Angus cattle raised on certified organic pastures in Transylvania, Romania."
+  },
+  "about": {
+    "kicker": "Who we are",
+    "title": "Raised on organic pastures in the heart of Transylvania.",
+    "farmsLabel": "Our farms",
+    "p1": "Belmont Group raises pure-bred Angus cattle on certified organic pastures in the Transylvanian villages of Glâmboaca, Colun, and Săsăuș in Romania. We operate both owned and leased land, growing our own feed crops to support our herd year-round.",
+    "p2": "As a suckler cow operation, we produce beef cattle through natural pasture farming — entirely free from hormones and artificial additives. Our team works alongside nature, allowing our cattle to grow in a calm, stress-free environment that mirrors the natural rhythms of the land.",
+    "p3": "The Belmont Group is wholly owned by a Swiss family."
+  },
+  "angus": {
+    "kicker": "Angus beef",
+    "title": "Angus: hardy, calm, efficient — and naturally built for premium beef.",
+    "intro": "The Angus breed originates from Scotland and is prized for exceptional meat quality, ease of management, hardiness, fertility, and natural adaptability.",
+    "imageAlt": "Angus cow with her calf on pasture",
+    "traits": [
+      {
+        "title": "Black Angus character",
+        "text": "Hardy animals suited to open pasture and changing weather."
+      },
+      {
+        "title": "Grass-fed foundation",
+        "text": "Summer grazing, winter hay and silage from Belmont land."
+      },
+      {
+        "title": "Calm herd life",
+        "text": "Low-stress handling supports animal welfare and quality."
+      },
+      {
+        "title": "Premium genetics",
+        "text": "Selected for fertility, mothering ability, and meat quality."
+      }
+    ],
+    "benefitsLabel": "Why Angus",
+    "benefits": [
+      {
+        "title": "Outstanding meat quality",
+        "text": "Naturally well-marbled, tender, and juicy."
+      },
+      {
+        "title": "Climate adaptability",
+        "text": "Thrives in challenging weather and diverse environments."
+      },
+      {
+        "title": "Feed efficiency",
+        "text": "Converts pasture effectively into muscle."
+      },
+      {
+        "title": "Easy to manage",
+        "text": "Calm temperament and genetically hornless."
+      },
+      {
+        "title": "Excellent mothers",
+        "text": "High milk yield and strong calf-rearing ability."
+      },
+      {
+        "title": "Easy calving",
+        "text": "Lower birth weights help reduce complications."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Get in touch.",
+    "intro": "We welcome enquiries from buyers, traders, farming partners, and anyone interested in learning more about Belmont Group.",
+    "emailLabel": "Email",
+    "emailValue": "[EMAIL ADDRESS]",
+    "phoneLabel": "Phone",
+    "phoneValue": "[PHONE NUMBER — optional]",
+    "addressLabel": "Address",
+    "addressValue": "Belmont Group, Sibiu, Romania",
+    "formTitle": "Contact form",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sent": "Thank you! Your message has been sent.",
+    "sending": "Sending…",
+    "failed": "Your message could not be sent. Please try again.",
+    "errors": {
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address.",
+      "messageRequired": "Please write a message."
+    }
+  },
+  "gallery": {
+    "kicker": "Gallery",
+    "title": "Belmont Angus on organic Transylvanian pastures.",
+    "open": "Enlarge photo",
+    "close": "Close",
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "loadMore": "Load more photos",
+    "countOf": "of",
+    "countUnit": "photos",
+    "photos": [
+      "Belmont Angus herd",
+      "Two cattle on pasture",
+      "Black Angus grazing",
+      "Pasture with the herd in the distance",
+      "Pasture under a summer sky",
+      "View towards the lake and mountains",
+      "Hills and pastures",
+      "Tall grass on the hillside",
+      "Angus bull and cow",
+      "Green hills",
+      "The valley seen from the hill",
+      "Hay meadow in summer light",
+      "The herd in the shade of a tree",
+      "The herd at rest, mountains beyond",
+      "Angus cow with calf",
+      "The herd in the snow"
+    ]
+  },
+  "hero": {
+    "eyebrow": "Certified organic pastures · Transylvania",
+    "title": "Pasture-raised Angus from Transylvania.",
+    "lead": "“Beef born on pasture, raised with respect.”",
+    "copy": "Pure-bred Angus cattle raised outdoors on certified organic pastures in Transylvania — with slow growth, natural feed, and a clear focus on animal welfare and meat quality.",
+    "ctaPrimary": "Discover our story",
+    "ctaSecondary": "Contact us",
+    "imageAlt": "The Belmont Angus herd on pasture",
+    "facts": [
+      {
+        "title": "Pure-bred Angus",
+        "text": "Selected for calm temperament, fertility, and strong pasture performance."
+      },
+      {
+        "title": "Organic pastures",
+        "text": "Raised on grass, hay, and silage grown on our own land."
+      },
+      {
+        "title": "Natural beef quality",
+        "text": "Slow, low-stress growth supports tenderness, flavour, and marbling."
+      }
+    ]
+  },
+  "philosophy": {
+    "quote": "“What our cattle eat determines their health. Their health determines the quality of the meat.”",
+    "kicker": "Our philosophy",
+    "title": "Going back to what is real.",
+    "p1": "At Belmont Group, we believe in extensive, low-intensity farming. In summer, our cattle graze exclusively on fresh grass. In winter, they are fed hay and silage grown entirely on our own land.",
+    "p2": "Cattle that live outdoors, move freely, and feed on natural pasture produce beef that is honest: nutrient-rich, easy to digest, and truly natural in the best sense of the word.",
+    "p3": "Belmont Group is committed to responsible, measured, and high-quality land management with a focus on food production."
+  },
+  "products": {
+    "kicker": "Products",
+    "title": "From our own breeding programme.",
+    "lead": "“Beef born on pasture, raised with respect.”",
+    "items": [
+      {
+        "title": "Robust male weaners",
+        "text": "Store cattle ready for further finishing."
+      },
+      {
+        "title": "Selected female breeding heifers",
+        "text": "High-quality animals from our own stock."
+      },
+      {
+        "title": "Cull cows",
+        "text": "Retired from the breeding herd."
+      }
+    ],
+    "note": "Pricing reflects the individual animal's quality, live weight, and current market rates. Animals are typically available seasonally. We welcome enquiries from farmers, traders, and buyers across Europe.",
+    "cta": "Enquire about availability"
+  },
+  "region": {
+    "romania": {
+      "kicker": "Romania",
+      "title": "A dynamic country with deep agricultural roots.",
+      "p1": "Romania is a dynamic country in Eastern Europe with a rich history, a growing economy, and deep roots in agriculture. Since joining the European Union in 2007, Romania has made significant strides in infrastructure, investment, and regional influence.",
+      "p2": "The country has fertile soils and is a major agricultural producer. Livestock farming is widespread and deeply embedded in rural culture.",
+      "imageAlt": "View over a river valley with mountains in the distance"
+    },
+    "transylvania": {
+      "kicker": "Transylvania",
+      "title": "Clean air, traditional landscapes, natural farming.",
+      "p1": "Transylvania is one of Romania's most celebrated regions — surrounded by the Carpathian Mountains and known for medieval heritage, multicultural history, and breathtaking natural landscapes.",
+      "p2": "For Belmont Group, Transylvania represents more than a location. Its clean air, traditional agricultural landscape, and low-intensity land use provide ideal conditions for extensive cattle farming.",
+      "imageAlt": "Herd resting on pasture with snow-capped mountains behind"
+    }
+  },
+  "footer": {
+    "navLabel": "Footer navigation",
+    "nav": {
+      "about": "Who we are",
+      "philosophy": "Philosophy",
+      "products": "Products",
+      "angus": "Angus beef",
+      "gallery": "Gallery",
+      "contact": "Contact"
+    },
+    "rights": "© 2026 Belmont Group. All rights reserved.",
+    "address": "Sibiu, Romania"
+  },
+  "header": {
+    "home": "Belmont Group — home",
+    "navLabel": "Main navigation",
+    "langLabel": "Language",
+    "progressLabel": "Page reading progress",
+    "cta": "Contact",
+    "nav": {
+      "about": "Who we are",
+      "philosophy": "Philosophy",
+      "products": "Products",
+      "angus": "Angus beef",
+      "gallery": "Gallery"
+    }
+  },
+  "team": {
+    "kicker": "Our team",
+    "title": "Guided by a dedicated leadership team.",
+    "intro": "The Belmont Group is guided by a small leadership team and supported by experienced farm staff across our three locations in Transylvania.",
+    "photoPlaceholder": "[PHOTO]",
+    "bioPlaceholder": "[SHORT BIO]",
+    "members": [
+      {
+        "area": "Strategic direction",
+        "name": "[NAME]",
+        "role": "Owner / Managing Director"
+      },
+      {
+        "area": "Glâmboaca & Colun",
+        "name": "Nicu Tămășel",
+        "role": "Farm Manager"
+      },
+      {
+        "area": "Săsăuș",
+        "name": "Liviu Muntean",
+        "role": "Farm Manager"
+      }
+    ],
+    "admin": "Administration and central services: Anca Anghelini, Alina Denghel."
+  }
+}

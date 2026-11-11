@@ -1,0 +1,164 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-paper));
+  border-top: 1px solid var(--color-line);
+}
+
+.inner {
+  @include s.container;
+  @include s.stack(clamp(32px, 4vw, 48px));
+}
+
+.intro {
+  @include s.stack(20px);
+}
+
+.kicker {
+  @include s.kicker;
+}
+
+.title {
+  @include s.h2;
+  max-width: 820px;
+}
+
+.grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 12px;
+}
+
+.cell {
+  display: flex;
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--color-sage);
+  cursor: zoom-in;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform var(--thumb-zoom-duration) ease;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    transform: scale(var(--thumb-zoom));
+  }
+
+  // The image covers the button, so draw the ring inside it.
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+}
+
+.more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.count {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--button-height);
+  padding: 0 28px;
+  border: 1px solid var(--color-forest);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-forest);
+  font-family: inherit;
+  font-size: var(--text-button);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 72px 16px 24px;
+  box-sizing: border-box;
+  background: var(--color-scrim);
+}
+
+.round-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(246, 241, 230, 0.4);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-on-dark);
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(1100px, 100%);
+  max-height: calc(100vh - 220px);
+  object-fit: contain;
+}
+
+.lightbox-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.caption {
+  margin: 0;
+  min-width: 220px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-on-dark);
+}
+
+.counter {
+  color: var(--color-bronze-light);
+}

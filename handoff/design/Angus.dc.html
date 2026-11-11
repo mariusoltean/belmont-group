@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Rasa Angus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="angus" data-component="app-angus" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #FBF8F1; border-top: 1px solid rgba(28, 35, 28, 0.14); padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(40px, 4.5vw, 56px)">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A5F2B">{{t.kicker}}</p>
+<h2 style="margin: 0; max-width: 980px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.04; letter-spacing: -0.01em; color: #24382A; text-wrap: balance">{{t.title}}</h2>
+<p style="margin: 0; max-width: 760px; font-size: 18px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.intro}}</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: center">
+<img src="assets/images/photo-15.jpg" alt="{{t.imageAlt}}" style="display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 28px 32px">
+<sc-for list="{{t.traits}}" as="trait" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 1px solid #1C231C">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.1; color: #24382A">{{trait.title}}</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4438">{{trait.text}}</p>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px; padding: clamp(24px, 3vw, 40px); background: #E9EBDF">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #566052">{{t.benefitsLabel}}</p>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px 40px">
+<sc-for list="{{t.benefits}}" as="benefit" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<dt style="font-size: 17px; font-weight: 700; line-height: 1.35; color: #24382A">{{benefit.title}}</dt>
+<dd style="margin: 0; font-size: 16px; line-height: 1.55; color: #3A4438">{{benefit.text}}</dd>
+</div>
+</sc-for>
+</dl>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":1360}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-angus"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+i18n() {
+return {
+ro: {
+kicker: 'Rasa Angus',
+title: 'Angus: rezistent, calm, eficient — și făcut de natură pentru carne premium.',
+intro: 'Rasa Angus provine din Scoția și este apreciată pentru calitatea excepțională a cărnii, ușurința în îngrijire, rezistență, fertilitate și adaptabilitate naturală.',
+imageAlt: 'Vacă Angus cu vițelul ei pe pășune',
+traits: [
+{ title: 'Caracter Black Angus', text: 'Animale rezistente, potrivite pentru pășune deschisă și vreme schimbătoare.' },
+{ title: 'Hrănire pe bază de iarbă', text: 'Pășunat vara, fân și siloz iarna, de pe terenurile Belmont.' },
+{ title: 'Viață liniștită în cireadă', text: 'Manipularea fără stres susține bunăstarea animalelor și calitatea.' },
+{ title: 'Genetică premium', text: 'Selecție pentru fertilitate, instinct matern și calitatea cărnii.' }
+],
+benefitsLabel: 'De ce Angus',
+benefits: [
+{ title: 'Calitate remarcabilă a cărnii', text: 'Natural marmorată, fragedă și suculentă.' },
+{ title: 'Adaptabilitate climatică', text: 'Se dezvoltă bine pe vreme aspră și în medii diverse.' },
+{ title: 'Eficiență furajeră', text: 'Transformă eficient pășunea în masă musculară.' },
+{ title: 'Ușor de îngrijit', text: 'Temperament calm și, genetic, fără coarne.' },
+{ title: 'Mame excelente', text: 'Producție bună de lapte și viței bine crescuți.' },
+{ title: 'Fătări ușoare', text: 'Greutatea mai mică la naștere reduce complicațiile.' }
+]
+},
+en: {
+kicker: 'Angus beef',
+title: 'Angus: hardy, calm, efficient — and naturally built for premium beef.',
+intro: 'The Angus breed originates from Scotland and is prized for exceptional meat quality, ease of management, hardiness, fertility, and natural adaptability.',
+imageAlt: 'Angus cow with her calf on pasture',
+traits: [
+{ title: 'Black Angus character', text: 'Hardy animals suited to open pasture and changing weather.' },
+{ title: 'Grass-fed foundation', text: 'Summer grazing, winter hay and silage from Belmont land.' },
+{ title: 'Calm herd life', text: 'Low-stress handling supports animal welfare and quality.' },
+{ title: 'Premium genetics', text: 'Selected for fertility, mothering ability, and meat quality.' }
+],
+benefitsLabel: 'Why Angus',
+benefits: [
+{ title: 'Outstanding meat quality', text: 'Naturally well-marbled, tender, and juicy.' },
+{ title: 'Climate adaptability', text: 'Thrives in challenging weather and diverse environments.' },
+{ title: 'Feed efficiency', text: 'Converts pasture effectively into muscle.' },
+{ title: 'Easy to manage', text: 'Calm temperament and genetically hornless.' },
+{ title: 'Excellent mothers', text: 'High milk yield and strong calf-rearing ability.' },
+{ title: 'Easy calving', text: 'Lower birth weights help reduce complications.' }
+]
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+return { t: all[this.props.locale] || all.ro, reveal: this.reveal() };
+}
+}
+</script>
+</body>
+</html>

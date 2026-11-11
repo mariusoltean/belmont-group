@@ -1,13 +1,20 @@
-# --------- Static site served by nginx ---------
-# No build step yet: the placeholder in site/ is copied as-is.
-# When the real site code arrives, either drop the built files into site/
-# or add a Node build stage here (see the poveste-cu-lumini sites for that shape).
+# --------- Build: Angular app, prerendered to static HTML ---------
+FROM node:24-alpine AS build
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --no-audit --no-fund
+
+COPY . .
+RUN npx ng build --configuration production
+
+# --------- Runtime: static files served by nginx ---------
 FROM nginx:1.27-alpine AS runtime
 
 RUN rm -f /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY site/ /usr/share/nginx/html/
+COPY --from=build /app/dist/belmont-group/browser/ /usr/share/nginx/html/
 
 EXPOSE 80
 

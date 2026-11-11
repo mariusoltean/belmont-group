@@ -1,0 +1,41 @@
+<section id="angus" class="section">
+  <div class="inner" appReveal>
+    <div class="intro">
+      <p class="kicker">{{ 'angus.kicker' | t }}</p>
+      <h2 class="title">{{ 'angus.title' | t }}</h2>
+      <p class="body">{{ 'angus.intro' | t }}</p>
+    </div>
+    <div class="split">
+      <img
+        class="photo"
+        src="images/w1200/photo-15.jpg"
+        srcset="images/w800/photo-15.jpg 800w, images/w1200/photo-15.jpg 1200w, images/photo-15.jpg 1600w"
+        sizes="(min-width: 1040px) 544px, calc(100vw - 40px)"
+        [alt]="'angus.imageAlt' | t"
+        width="1600"
+        height="1067"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="traits">
+        @for (trait of traits(); track $index) {
+          <div class="trait">
+            <h3 class="trait-title">{{ trait.title }}</h3>
+            <p class="trait-text">{{ trait.text }}</p>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="benefits">
+      <p class="benefits-label">{{ 'angus.benefitsLabel' | t }}</p>
+      <dl class="benefits-list">
+        @for (benefit of benefits(); track $index) {
+          <div class="benefit">
+            <dt>{{ benefit.title }}</dt>
+            <dd>{{ benefit.text }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+  </div>
+</section>

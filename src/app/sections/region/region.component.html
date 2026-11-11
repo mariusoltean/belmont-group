@@ -1,0 +1,23 @@
+<section id="region" class="section">
+  <div class="inner" appReveal>
+    @for (article of articles; track article.key) {
+      <article class="article">
+        <img
+          class="photo"
+          [src]="'images/w1200/' + article.image"
+          [attr.srcset]="'images/w800/' + article.image + ' 800w, images/w1200/' + article.image + ' 1200w'"
+          sizes="(min-width: 1040px) 544px, calc(100vw - 40px)"
+          [alt]="article.key + '.imageAlt' | t"
+          [width]="article.width"
+          [height]="article.height"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="kicker">{{ article.key + '.kicker' | t }}</p>
+        <h2 class="title">{{ article.key + '.title' | t }}</h2>
+        <p class="body">{{ article.key + '.p1' | t }}</p>
+        <p class="body">{{ article.key + '.p2' | t }}</p>
+      </article>
+    }
+  </div>
+</section>

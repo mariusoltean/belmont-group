@@ -1,0 +1,61 @@
+// Belmont Group — design tokens (extracted from the approved design)
+
+:root {
+  // Colour
+  --color-cream: #f6f1e6; // page ground
+  --color-paper: #fbf8f1; // alternate light sections, cards
+  --color-sage: #e9ebdf; // team section, benefit panel, image placeholders
+  --color-ink: #1c231c; // strong rules, darkest text
+  --color-text: #3a4438; // body text on light
+  --color-muted: #566052; // secondary text on light
+  --color-forest: #24382a; // headings, primary buttons, dark sections
+  --color-deep: #141d15; // footer, lightbox scrim base
+  --color-bronze: #8a5f2b; // accent text / progress bar on light
+  --color-bronze-on-sage: #7a5325; // accent text on sage ground
+  --color-bronze-light: #d9b47a; // accent on dark
+  --color-on-dark: #f6f1e6; // headings on dark
+  --color-on-dark-text: #dde2d6; // body text on dark
+  --color-on-dark-muted: #b9c1b2; // footer small print
+  --color-line: rgba(28, 35, 28, 0.14);
+  --color-line-strong: rgba(28, 35, 28, 0.22);
+  --color-line-on-dark: rgba(246, 241, 230, 0.22);
+  --color-header-bg: rgba(246, 241, 230, 0.95);
+  --color-scrim: rgba(20, 29, 21, 0.94);
+
+  // Type
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-text: Figtree, system-ui, sans-serif;
+
+  --text-h1: clamp(46px, 6.2vw, 88px); // weight 500, line-height .98, tracking -0.015em
+  --text-h2: clamp(34px, 4.2vw, 58px); // weight 500, line-height 1.04, tracking -0.01em
+  --text-h2-small: clamp(30px, 3.2vw, 44px); // philosophy, region
+  --text-quote: clamp(30px, 3.6vw, 50px); // italic 500, line-height 1.14
+  --text-lead: clamp(22px, 2.2vw, 30px); // italic 500
+  --text-h3: 28px; // weight 600, line-height 1.1
+  --text-body-lg: 18px; // line-height 1.65
+  --text-body: 17px;
+  --text-body-sm: 16px;
+  --text-kicker: 13px; // weight 600, uppercase, tracking 0.18em
+  --text-button: 13px; // weight 600, uppercase, tracking 0.12em
+
+  // Layout
+  --container: 1160px;
+  --section-pad-y: clamp(52px, 5vw, 72px);
+  --section-pad-x: clamp(20px, 5vw, 40px);
+  --grid-gap: clamp(32px, 5vw, 72px);
+  --column-min: 440px; // repeat(auto-fit, minmax(min(440px, 100%), 1fr))
+  --radius: 2px;
+  --button-height: 52px;
+  --button-height-header: 44px;
+  --touch-min: 44px;
+  --header-offset: 100px; // scroll-margin-top on sections
+
+  // Motion
+  --reveal-distance: 28px;
+  --reveal-duration: 0.8s;
+  --header-transition: 0.25s ease;
+  --hero-zoom-duration: 2.4s;
+  --hero-zoom-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --thumb-zoom: 1.06;
+  --thumb-zoom-duration: 0.6s;
+}

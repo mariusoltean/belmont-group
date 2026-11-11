@@ -1,0 +1,98 @@
+// Shared section building blocks, ported 1:1 from the inline styles in design/*.dc.html.
+
+@mixin section($bg: var(--color-cream), $color: var(--color-ink)) {
+  display: block;
+  font-family: var(--font-text);
+  color: $color;
+  background: $bg;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  scroll-margin-top: var(--header-offset);
+}
+
+@mixin container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+@mixin two-col($gap: var(--grid-gap)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+  gap: $gap;
+}
+
+@mixin stack($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin kicker($color: var(--color-bronze)) {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin label($color: var(--color-muted)) {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin h2($color: var(--color-forest)) {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-h2);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: $color;
+  text-wrap: balance;
+}
+
+@mixin h2-small($color: var(--color-forest)) {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-h2-small);
+  line-height: 1.06;
+  color: $color;
+  text-wrap: balance;
+}
+
+@mixin card-title($size: 28px) {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: $size;
+  line-height: 1.1;
+  color: var(--color-forest);
+}
+
+@mixin body($size: 18px, $color: var(--color-text), $lh: 1.65) {
+  margin: 0;
+  font-size: $size;
+  line-height: $lh;
+  color: $color;
+  text-wrap: pretty;
+}
+
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  height: var(--button-height);
+  padding: 0 28px;
+  border-radius: var(--radius);
+  background: var(--color-forest);
+  color: var(--color-cream);
+  font-size: var(--text-button);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}

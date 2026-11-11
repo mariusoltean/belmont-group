@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "title": "Belmont Group | Angus crescut pe pășune, în Transilvania",
+    "description": "Bovine Angus de rasă pură, crescute pe pășuni certificate ecologic în Transilvania, România."
+  },
+  "about": {
+    "kicker": "Cine suntem",
+    "title": "Crescute pe pășuni ecologice, în inima Transilvaniei.",
+    "farmsLabel": "Fermele noastre",
+    "p1": "Belmont Group crește bovine Angus de rasă pură pe pășuni certificate ecologic în satele transilvănene Glâmboaca, Colun și Săsăuș, din România. Lucrăm atât terenuri proprii, cât și arendate, și ne cultivăm singuri furajele pentru a hrăni cireada pe tot parcursul anului.",
+    "p2": "Suntem o fermă de vaci cu vițel: producem bovine de carne prin pășunat natural — fără hormoni și fără aditivi artificiali. Echipa noastră lucrează alături de natură, iar animalele cresc într-un mediu liniștit, lipsit de stres, care urmează ritmul firesc al pământului.",
+    "p3": "Belmont Group este deținut integral de o familie elvețiană."
+  },
+  "angus": {
+    "kicker": "Rasa Angus",
+    "title": "Angus: rezistent, calm, eficient — și făcut de natură pentru carne premium.",
+    "intro": "Rasa Angus provine din Scoția și este apreciată pentru calitatea excepțională a cărnii, ușurința în îngrijire, rezistență, fertilitate și adaptabilitate naturală.",
+    "imageAlt": "Vacă Angus cu vițelul ei pe pășune",
+    "traits": [
+      {
+        "title": "Caracter Black Angus",
+        "text": "Animale rezistente, potrivite pentru pășune deschisă și vreme schimbătoare."
+      },
+      {
+        "title": "Hrănire pe bază de iarbă",
+        "text": "Pășunat vara, fân și siloz iarna, de pe terenurile Belmont."
+      },
+      {
+        "title": "Viață liniștită în cireadă",
+        "text": "Manipularea fără stres susține bunăstarea animalelor și calitatea."
+      },
+      {
+        "title": "Genetică premium",
+        "text": "Selecție pentru fertilitate, instinct matern și calitatea cărnii."
+      }
+    ],
+    "benefitsLabel": "De ce Angus",
+    "benefits": [
+      {
+        "title": "Calitate remarcabilă a cărnii",
+        "text": "Natural marmorată, fragedă și suculentă."
+      },
+      {
+        "title": "Adaptabilitate climatică",
+        "text": "Se dezvoltă bine pe vreme aspră și în medii diverse."
+      },
+      {
+        "title": "Eficiență furajeră",
+        "text": "Transformă eficient pășunea în masă musculară."
+      },
+      {
+        "title": "Ușor de îngrijit",
+        "text": "Temperament calm și, genetic, fără coarne."
+      },
+      {
+        "title": "Mame excelente",
+        "text": "Producție bună de lapte și viței bine crescuți."
+      },
+      {
+        "title": "Fătări ușoare",
+        "text": "Greutatea mai mică la naștere reduce complicațiile."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Luați legătura cu noi.",
+    "intro": "Așteptăm solicitări de la cumpărători, comercianți, parteneri agricoli și de la oricine dorește să afle mai multe despre Belmont Group.",
+    "emailLabel": "E-mail",
+    "emailValue": "[ADRESĂ DE E-MAIL]",
+    "phoneLabel": "Telefon",
+    "phoneValue": "[NUMĂR DE TELEFON — opțional]",
+    "addressLabel": "Adresă",
+    "addressValue": "Belmont Group, Sibiu, România",
+    "formTitle": "Formular de contact",
+    "name": "Nume",
+    "email": "E-mail",
+    "message": "Mesaj",
+    "send": "Trimite mesajul",
+    "sent": "Mulțumim! Mesajul a fost trimis.",
+    "sending": "Se trimite…",
+    "failed": "Mesajul nu a putut fi trimis. Vă rugăm să încercați din nou.",
+    "errors": {
+      "nameRequired": "Vă rugăm să introduceți numele.",
+      "emailRequired": "Vă rugăm să introduceți adresa de e-mail.",
+      "emailInvalid": "Adresa de e-mail nu este validă.",
+      "messageRequired": "Vă rugăm să scrieți un mesaj."
+    }
+  },
+  "gallery": {
+    "kicker": "Galerie",
+    "title": "Belmont Angus pe pășunile ecologice ale Transilvaniei.",
+    "open": "Mărește fotografia",
+    "close": "Închide",
+    "prev": "Fotografia anterioară",
+    "next": "Fotografia următoare",
+    "loadMore": "Încarcă mai multe fotografii",
+    "countOf": "din",
+    "countUnit": "fotografii",
+    "photos": [
+      "Cireada Belmont Angus",
+      "Două bovine pe pășune",
+      "Black Angus la păscut",
+      "Pășune cu cireada în depărtare",
+      "Pășune sub cer de vară",
+      "Vedere spre lac și munți",
+      "Dealuri și pășuni",
+      "Iarbă înaltă pe deal",
+      "Taur și vacă Angus",
+      "Coline verzi",
+      "Valea văzută de pe deal",
+      "Fâneață în lumina verii",
+      "Cireada la umbra unui copac",
+      "Cireada la odihnă, cu munții în zare",
+      "Vacă Angus cu vițel",
+      "Cireada pe zăpadă"
+    ]
+  },
+  "hero": {
+    "eyebrow": "Pășuni certificate ecologic · Transilvania",
+    "title": "Angus crescut pe pășune, în Transilvania.",
+    "lead": "„Carne născută pe pășune, crescută cu respect.”",
+    "copy": "Bovine Angus de rasă pură, crescute în aer liber pe pășuni certificate ecologic din Transilvania — cu creștere lentă, furaje naturale și o atenție constantă pentru bunăstarea animalelor și calitatea cărnii.",
+    "ctaPrimary": "Descoperă povestea noastră",
+    "ctaSecondary": "Contactează-ne",
+    "imageAlt": "Cireada Belmont de bovine Angus pe pășune",
+    "facts": [
+      {
+        "title": "Angus de rasă pură",
+        "text": "Selecționat pentru temperament calm, fertilitate și performanță bună pe pășune."
+      },
+      {
+        "title": "Pășuni ecologice",
+        "text": "Crescut cu iarbă, fân și siloz produse pe terenurile noastre."
+      },
+      {
+        "title": "Calitate naturală a cărnii",
+        "text": "Creșterea lentă, fără stres, susține frăgezimea, gustul și marmorarea."
+      }
+    ]
+  },
+  "philosophy": {
+    "quote": "„Ceea ce mănâncă bovinele noastre le determină sănătatea. Sănătatea lor determină calitatea cărnii.”",
+    "kicker": "Filosofia noastră",
+    "title": "Înapoi la ceea ce este autentic.",
+    "p1": "La Belmont Group credem în agricultura extensivă, de intensitate redusă. Vara, bovinele noastre pasc exclusiv iarbă proaspătă. Iarna sunt hrănite cu fân și siloz produse în întregime pe terenurile noastre.",
+    "p2": "Bovinele care trăiesc în aer liber, se mișcă în voie și se hrănesc de pe pășuni naturale dau o carne onestă: bogată în nutrienți, ușor de digerat și cu adevărat naturală, în cel mai bun sens al cuvântului.",
+    "p3": "Belmont Group se angajează să gestioneze terenurile responsabil, cumpătat și la un nivel înalt de calitate, cu accent pe producția de hrană."
+  },
+  "products": {
+    "kicker": "Produse",
+    "title": "Din propriul nostru program de reproducție.",
+    "lead": "„Carne născută pe pășune, crescută cu respect.”",
+    "items": [
+      {
+        "title": "Tăurași înțărcați robuști",
+        "text": "Tineret gata pentru finisare."
+      },
+      {
+        "title": "Juninci de reproducție selecționate",
+        "text": "Animale de calitate superioară, din efectivul propriu."
+      },
+      {
+        "title": "Vaci de reformă",
+        "text": "Retrase din cireada de reproducție."
+      }
+    ],
+    "note": "Prețul reflectă calitatea fiecărui animal, greutatea în viu și cotațiile curente ale pieței. Animalele sunt disponibile, de regulă, sezonier. Așteptăm solicitări de la fermieri, comercianți și cumpărători din întreaga Europă.",
+    "cta": "Întreabă despre disponibilitate"
+  },
+  "region": {
+    "romania": {
+      "kicker": "România",
+      "title": "O țară dinamică, cu rădăcini agricole adânci.",
+      "p1": "România este o țară dinamică din Europa de Est, cu o istorie bogată, o economie în creștere și rădăcini adânci în agricultură. De la aderarea la Uniunea Europeană, în 2007, România a făcut progrese importante în infrastructură, investiții și influență regională.",
+      "p2": "Țara are soluri fertile și este un producător agricol important. Creșterea animalelor este larg răspândită și profund înrădăcinată în cultura rurală.",
+      "imageAlt": "Vedere peste o vale cu râu, cu munții în zare"
+    },
+    "transylvania": {
+      "kicker": "Transilvania",
+      "title": "Aer curat, peisaje tradiționale, agricultură naturală.",
+      "p1": "Transilvania este una dintre cele mai apreciate regiuni ale României — înconjurată de Munții Carpați și cunoscută pentru moștenirea medievală, istoria multiculturală și peisajele naturale spectaculoase.",
+      "p2": "Pentru Belmont Group, Transilvania înseamnă mai mult decât o locație. Aerul curat, peisajul agricol tradițional și folosirea puțin intensivă a terenurilor oferă condiții ideale pentru creșterea extensivă a bovinelor.",
+      "imageAlt": "Cireadă odihnindu-se pe pășune, cu munți înzăpeziți în fundal"
+    }
+  },
+  "footer": {
+    "navLabel": "Navigare în subsol",
+    "nav": {
+      "about": "Cine suntem",
+      "philosophy": "Filosofie",
+      "products": "Produse",
+      "angus": "Rasa Angus",
+      "gallery": "Galerie",
+      "contact": "Contact"
+    },
+    "rights": "© 2026 Belmont Group. Toate drepturile rezervate.",
+    "address": "Sibiu, România"
+  },
+  "header": {
+    "home": "Belmont Group — acasă",
+    "navLabel": "Navigare principală",
+    "langLabel": "Limbă",
+    "progressLabel": "Progresul citirii paginii",
+    "cta": "Contact",
+    "nav": {
+      "about": "Cine suntem",
+      "philosophy": "Filosofie",
+      "products": "Produse",
+      "angus": "Rasa Angus",
+      "gallery": "Galerie"
+    }
+  },
+  "team": {
+    "kicker": "Echipa noastră",
+    "title": "Ghidați de o echipă de conducere dedicată.",
+    "intro": "Belmont Group este condus de o echipă restrânsă și sprijinit de personal de fermă cu experiență, în cele trei locații ale noastre din Transilvania.",
+    "photoPlaceholder": "[FOTO]",
+    "bioPlaceholder": "[SCURTĂ BIOGRAFIE]",
+    "members": [
+      {
+        "area": "Direcție strategică",
+        "name": "[NUME]",
+        "role": "Proprietar / Director general"
+      },
+      {
+        "area": "Glâmboaca și Colun",
+        "name": "Nicu Tămășel",
+        "role": "Șef de fermă"
+      },
+      {
+        "area": "Săsăuș",
+        "name": "Liviu Muntean",
+        "role": "Șef de fermă"
+      }
+    ],
+    "admin": "Administrație și servicii centrale: Anca Anghelini, Alina Denghel."
+  }
+}

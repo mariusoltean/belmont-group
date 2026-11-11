@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Hero</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="home" data-component="app-hero" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #F6F1E6; padding: clamp(40px, 5vw, 72px) clamp(20px, 5vw, 40px) clamp(48px, 5vw, 64px); scroll-margin-top: 100px">
+<div style="max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: center">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 24px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A5F2B">{{t.eyebrow}}</p>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(46px, 6.2vw, 88px); line-height: 0.98; letter-spacing: -0.015em; color: #24382A; text-wrap: balance">{{t.title}}</h1>
+<p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.25; color: #24382A">{{t.lead}}</p>
+<p style="margin: 0; max-width: 540px; font-size: 18px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.copy}}</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 8px">
+<a href="#about" style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 2px; background: #24382A; color: #F6F1E6; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none">{{t.ctaPrimary}}</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 600; color: #24382A; text-decoration: underline; text-decoration-color: #8A5F2B; text-decoration-thickness: 1px; text-underline-offset: 6px">{{t.ctaSecondary}}</a>
+</div>
+</div>
+<div style="overflow: hidden; aspect-ratio: 1 / 1">
+<img src="assets/images/photo-01.jpg" alt="{{t.imageAlt}}" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; transform: scale({{zoom}}); transition: transform 2.4s cubic-bezier(0.2, 0.6, 0.2, 1)">
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 32px 40px">
+<sc-for list="{{facts}}" as="fact" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px; border-top: 1px solid #1C231C">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #8A5F2B">{{fact.no}}</span>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 28px; line-height: 1.1; color: #24382A">{{fact.title}}</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4438">{{fact.text}}</p>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+state = { settled: true };
+componentDidMount() {
+if (typeof window === 'undefined') return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+this.setState({ settled: false });
+window.requestAnimationFrame(() => window.requestAnimationFrame(() => this.setState({ settled: true })));
+}
+i18n() {
+return {
+ro: {
+eyebrow: 'Pășuni certificate ecologic · Transilvania',
+title: 'Angus crescut pe pășune, în Transilvania.',
+lead: '„Carne născută pe pășune, crescută cu respect.”',
+copy: 'Bovine Angus de rasă pură, crescute în aer liber pe pășuni certificate ecologic din Transilvania — cu creștere lentă, furaje naturale și o atenție constantă pentru bunăstarea animalelor și calitatea cărnii.',
+ctaPrimary: 'Descoperă povestea noastră',
+ctaSecondary: 'Contactează-ne',
+imageAlt: 'Cireada Belmont de bovine Angus pe pășune',
+facts: [
+{ title: 'Angus de rasă pură', text: 'Selecționat pentru temperament calm, fertilitate și performanță bună pe pășune.' },
+{ title: 'Pășuni ecologice', text: 'Crescut cu iarbă, fân și siloz produse pe terenurile noastre.' },
+{ title: 'Calitate naturală a cărnii', text: 'Creșterea lentă, fără stres, susține frăgezimea, gustul și marmorarea.' }
+]
+},
+en: {
+eyebrow: 'Certified organic pastures · Transylvania',
+title: 'Pasture-raised Angus from Transylvania.',
+lead: '“Beef born on pasture, raised with respect.”',
+copy: 'Pure-bred Angus cattle raised outdoors on certified organic pastures in Transylvania — with slow growth, natural feed, and a clear focus on animal welfare and meat quality.',
+ctaPrimary: 'Discover our story',
+ctaSecondary: 'Contact us',
+imageAlt: 'The Belmont Angus herd on pasture',
+facts: [
+{ title: 'Pure-bred Angus', text: 'Selected for calm temperament, fertility, and strong pasture performance.' },
+{ title: 'Organic pastures', text: 'Raised on grass, hay, and silage grown on our own land.' },
+{ title: 'Natural beef quality', text: 'Slow, low-stress growth supports tenderness, flavour, and marbling.' }
+]
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+const t = all[this.props.locale] || all.ro;
+return {
+t: t,
+zoom: (this.state && this.state.settled === false) ? '1.1' : '1',
+facts: t.facts.map((f, i) => ({ no: '0' + (i + 1), title: f.title, text: f.text }))
+};
+}
+}
+</script>
+</body>
+</html>

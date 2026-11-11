@@ -1,0 +1,55 @@
+<section id="gallery" class="section">
+  <div class="inner" appReveal>
+    <div class="intro">
+      <p class="kicker">{{ 'gallery.kicker' | t }}</p>
+      <h2 class="title">{{ 'gallery.title' | t }}</h2>
+    </div>
+    <ul class="grid">
+      @for (photo of photos(); track photo.src; let i = $index) {
+        <li class="cell">
+          <button
+            type="button"
+            class="thumb"
+            [attr.aria-label]="photo.openLabel"
+            (click)="open(i, $event.currentTarget)"
+          >
+            <img [src]="photo.thumb" alt="" width="800" height="500" loading="lazy" decoding="async" />
+          </button>
+        </li>
+      }
+    </ul>
+    <div class="more">
+      <p class="count" role="status">{{ countLabel() }}</p>
+      @if (hasMore()) {
+        <button type="button" class="more-btn" (click)="loadMore()">
+          {{ 'gallery.loadMore' | t }}
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v10M2.5 7.5L7 12l4.5-4.5"></path></svg>
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (isOpen()) {
+    <div #dialog class="lightbox on-dark" role="dialog" aria-modal="true" [attr.aria-label]="current().caption">
+      <button #closeButton type="button" class="round-btn close" [attr.aria-label]="'gallery.close' | t" (click)="close()">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"></path></svg>
+      </button>
+      <img
+        class="lightbox-img"
+        [src]="current().medium"
+        [attr.srcset]="current().medium + ' 1200w, ' + current().src + ' 1800w'"
+        sizes="min(1100px, 100vw)"
+        [alt]="current().caption"
+      />
+      <div class="lightbox-bar">
+        <button type="button" class="round-btn" [attr.aria-label]="'gallery.prev' | t" (click)="prev()">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-6 6 6 6"></path></svg>
+        </button>
+        <p class="caption">{{ current().caption }} <span class="counter">· {{ current().count }}</span></p>
+        <button type="button" class="round-btn" [attr.aria-label]="'gallery.next' | t" (click)="next()">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l6 6-6 6"></path></svg>
+        </button>
+      </div>
+    </div>
+  }
+</section>

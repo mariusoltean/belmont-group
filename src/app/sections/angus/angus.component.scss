@@ -1,0 +1,104 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-paper));
+  border-top: 1px solid var(--color-line);
+}
+
+.inner {
+  @include s.container;
+  @include s.stack(clamp(40px, 4.5vw, 56px));
+}
+
+.intro {
+  @include s.stack(20px);
+}
+
+.kicker {
+  @include s.kicker;
+}
+
+.title {
+  @include s.h2;
+  max-width: 980px;
+}
+
+.body {
+  @include s.body(18px);
+  max-width: 760px;
+}
+
+.split {
+  @include s.two-col;
+  align-items: center;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+.traits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 28px 32px;
+}
+
+.trait {
+  @include s.stack(8px);
+  padding-top: 18px;
+  border-top: 1px solid var(--color-ink);
+}
+
+.trait-title {
+  @include s.card-title(26px);
+}
+
+.trait-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.benefits {
+  @include s.stack(20px);
+  padding: clamp(24px, 3vw, 40px);
+  background: var(--color-sage);
+}
+
+.benefits-label {
+  @include s.label;
+}
+
+.benefits-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 24px 40px;
+}
+
+.benefit {
+  @include s.stack(4px);
+
+  dt {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-forest);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--color-text);
+  }
+}

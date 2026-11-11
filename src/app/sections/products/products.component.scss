@@ -1,0 +1,91 @@
+@use 'section' as s;
+
+:host {
+  display: block;
+}
+
+.section {
+  @include s.section(var(--color-cream));
+}
+
+.inner {
+  @include s.container;
+  @include s.two-col;
+  align-items: start;
+}
+
+.col {
+  @include s.stack(20px);
+}
+
+.col-list {
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.kicker {
+  @include s.kicker;
+}
+
+.title {
+  @include s.h2;
+}
+
+.lead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: 1.25;
+  color: var(--color-forest);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.item-no {
+  flex: 0 0 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-bronze);
+}
+
+.item-body {
+  @include s.stack(6px);
+}
+
+.item-title {
+  @include s.card-title(28px);
+}
+
+.item-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.note {
+  @include s.body(16px, var(--color-muted));
+}
+
+.btn-primary {
+  @include s.button-primary;
+}

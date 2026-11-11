@@ -1,0 +1,21 @@
+<section id="about" class="section">
+  <div class="inner" appReveal>
+    <div class="col">
+      <p class="kicker">{{ 'about.kicker' | t }}</p>
+      <h2 class="title">{{ 'about.title' | t }}</h2>
+      <div class="farms">
+        <p class="farms-label">{{ 'about.farmsLabel' | t }}</p>
+        <ul class="farms-list">
+          @for (farm of farms; track farm) {
+            <li>{{ farm }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <p class="body">{{ 'about.p1' | t }}</p>
+      <p class="body">{{ 'about.p2' | t }}</p>
+      <p class="owner">{{ 'about.p3' | t }}</p>
+    </div>
+  </div>
+</section>

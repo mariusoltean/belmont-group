@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Subsol</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<footer data-component="app-site-footer" style="font-family: Figtree, system-ui, sans-serif; color: #DDE2D6; background: #141D15; padding: 48px clamp(20px, 5vw, 40px) 32px">
+<div style="max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #F6F1E6">Belmont Group</p>
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #D9B47A">Angus Farms</p>
+</div>
+<nav aria-label="{{t.navLabel}}" style="display: flex; flex-wrap: wrap; gap: 0 28px">
+<sc-for list="{{links}}" as="link" hint-placeholder-count="6">
+<a href="{{link.href}}" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 500; color: #DDE2D6; text-decoration: none; white-space: nowrap">{{link.label}}</a>
+</sc-for>
+</nav>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; padding-top: 20px; border-top: 1px solid rgba(246, 241, 230, 0.18)">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #B9C1B2">{{t.rights}}</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #B9C1B2">{{t.address}}</p>
+</div>
+</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":280}}'>
+class Component extends DCLogic {
+i18n() {
+return {
+ro: {
+navLabel: 'Navigare în subsol',
+nav: { about: 'Cine suntem', philosophy: 'Filosofie', products: 'Produse', angus: 'Rasa Angus', gallery: 'Galerie', contact: 'Contact' },
+rights: '© 2026 Belmont Group. Toate drepturile rezervate.',
+address: 'Sibiu, România'
+},
+en: {
+navLabel: 'Footer navigation',
+nav: { about: 'Who we are', philosophy: 'Philosophy', products: 'Products', angus: 'Angus beef', gallery: 'Gallery', contact: 'Contact' },
+rights: '© 2026 Belmont Group. All rights reserved.',
+address: 'Sibiu, Romania'
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+const t = all[this.props.locale] || all.ro;
+return {
+t: t,
+links: ['about', 'philosophy', 'products', 'angus', 'gallery', 'contact'].map((id) => ({ href: '#' + id, label: t.nav[id] }))
+};
+}
+}
+</script>
+</body>
+</html>

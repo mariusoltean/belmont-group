@@ -1,0 +1,24 @@
+<section id="products" class="section">
+  <div class="inner" appReveal>
+    <div class="col">
+      <p class="kicker">{{ 'products.kicker' | t }}</p>
+      <h2 class="title">{{ 'products.title' | t }}</h2>
+      <p class="lead">{{ 'products.lead' | t }}</p>
+    </div>
+    <div class="col col-list">
+      <ol class="list">
+        @for (item of items(); track $index) {
+          <li class="item">
+            <span class="item-no">{{ item.no }}</span>
+            <div class="item-body">
+              <h3 class="item-title">{{ item.title }}</h3>
+              <p class="item-text">{{ item.text }}</p>
+            </div>
+          </li>
+        }
+      </ol>
+      <p class="note">{{ 'products.note' | t }}</p>
+      <a class="btn-primary" href="#contact">{{ 'products.cta' | t }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<section id="home" class="hero">
+  <div class="inner">
+    <div class="split">
+      <div class="text">
+        <p class="eyebrow">{{ 'hero.eyebrow' | t }}</p>
+        <h1 class="title">{{ 'hero.title' | t }}</h1>
+        <p class="lead">{{ 'hero.lead' | t }}</p>
+        <p class="copy">{{ 'hero.copy' | t }}</p>
+        <div class="actions">
+          <a class="btn-primary" href="#about">{{ 'hero.ctaPrimary' | t }}</a>
+          <a class="link" href="#contact">{{ 'hero.ctaSecondary' | t }}</a>
+        </div>
+      </div>
+      <div class="photo">
+        <img
+          src="images/photo-01.jpg"
+          srcset="images/w800/photo-01.jpg 800w, images/w1200/photo-01.jpg 1200w, images/photo-01.jpg 1800w"
+          sizes="(min-width: 1040px) 544px, calc(100vw - 40px)"
+          [alt]="'hero.imageAlt' | t"
+          width="1800"
+          height="1381"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    </div>
+    <div class="facts">
+      @for (fact of facts(); track $index) {
+        <div class="fact">
+          <span class="fact-no">{{ fact.no }}</span>
+          <h2 class="fact-title">{{ fact.title }}</h2>
+          <p class="fact-text">{{ fact.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

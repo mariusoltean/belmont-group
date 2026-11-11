@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Belmont Group — Cine suntem</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<section id="about" data-component="app-about" style="font-family: Figtree, system-ui, sans-serif; color: #1C231C; background: #FBF8F1; border-top: 1px solid rgba(28, 35, 28, 0.14); padding: clamp(52px, 5vw, 72px) clamp(20px, 5vw, 40px); scroll-margin-top: 100px">
+<div style="opacity: {{reveal.o}}; transform: translateY({{reveal.y}}); transition: opacity 0.8s ease, transform 0.8s ease; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: start">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8A5F2B">{{t.kicker}}</p>
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.2vw, 58px); line-height: 1.04; letter-spacing: -0.01em; color: #24382A; text-wrap: balance">{{t.title}}</h2>
+<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(28, 35, 28, 0.14)">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #566052">{{t.farmsLabel}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 28px">
+<li style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 30px; line-height: 1.2; color: #24382A">Glâmboaca</li>
+<li style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 30px; line-height: 1.2; color: #24382A">Colun</li>
+<li style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 30px; line-height: 1.2; color: #24382A">Săsăuș</li>
+</ul>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.p1}}</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #3A4438; text-wrap: pretty">{{t.p2}}</p>
+<p style="margin: 0; padding-top: 20px; border-top: 1px solid rgba(28, 35, 28, 0.14); font-size: 18px; line-height: 1.65; font-weight: 600; color: #24382A">{{t.p3}}</p>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"locale":{"editor":"enum","options":["ro","en"],"default":"ro","section":"Language"},"$preview":{"width":1440,"height":680}}'>
+class Component extends DCLogic {
+componentDidMount() {
+if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const el = document.querySelector('[data-component="app-about"]');
+if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+this.setState({ hidden: true });
+this.io = new IntersectionObserver((entries) => {
+if (entries.some((e) => e.isIntersecting)) {
+this.setState({ hidden: false });
+this.io.disconnect();
+}
+}, { threshold: 0.1 });
+this.io.observe(el);
+}
+componentWillUnmount() {
+if (this.io) this.io.disconnect();
+}
+reveal() {
+return (this.state && this.state.hidden) ? { o: '0', y: '28px' } : { o: '1', y: '0px' };
+}
+i18n() {
+return {
+ro: {
+kicker: 'Cine suntem',
+title: 'Crescute pe pășuni ecologice, în inima Transilvaniei.',
+farmsLabel: 'Fermele noastre',
+p1: 'Belmont Group crește bovine Angus de rasă pură pe pășuni certificate ecologic în satele transilvănene Glâmboaca, Colun și Săsăuș, din România. Lucrăm atât terenuri proprii, cât și arendate, și ne cultivăm singuri furajele pentru a hrăni cireada pe tot parcursul anului.',
+p2: 'Suntem o fermă de vaci cu vițel: producem bovine de carne prin pășunat natural — fără hormoni și fără aditivi artificiali. Echipa noastră lucrează alături de natură, iar animalele cresc într-un mediu liniștit, lipsit de stres, care urmează ritmul firesc al pământului.',
+p3: 'Belmont Group este deținut integral de o familie elvețiană.'
+},
+en: {
+kicker: 'Who we are',
+title: 'Raised on organic pastures in the heart of Transylvania.',
+farmsLabel: 'Our farms',
+p1: 'Belmont Group raises pure-bred Angus cattle on certified organic pastures in the Transylvanian villages of Glâmboaca, Colun, and Săsăuș in Romania. We operate both owned and leased land, growing our own feed crops to support our herd year-round.',
+p2: 'As a suckler cow operation, we produce beef cattle through natural pasture farming — entirely free from hormones and artificial additives. Our team works alongside nature, allowing our cattle to grow in a calm, stress-free environment that mirrors the natural rhythms of the land.',
+p3: 'The Belmont Group is wholly owned by a Swiss family.'
+}
+};
+}
+renderVals() {
+const all = this.i18n();
+return { t: all[this.props.locale] || all.ro, reveal: this.reveal() };
+}
+}
+</script>
+</body>
+</html>
