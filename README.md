@@ -45,10 +45,12 @@ Everything the client can edit lives in `content/`:
 - `content/images.json` — the four fixed photos (hero, Angus, România, Transilvania)
 - `content/uploads/` — photos uploaded from the admin (`<id>.jpg` + `w800/<id>.jpg`)
 
-The admin (`admin/`, plain Node, no runtime dependencies) lets the single admin user
+The admin (`admin/`, plain Node + `sharp` for photos) lets the single admin user
 edit texts, add / replace / delete / reorder gallery photos and replace the fixed
-photos. Photos are resized to 1600px + 800px JPEG in the browser before upload
-(metadata such as GPS is dropped). **Publish** runs `ng build` with the current
+photos. Originals up to 25 MB (JPEG, PNG, WebP, AVIF, TIFF; HEIC is converted in the
+browser) are shrunk on the server to 2000px + 800px JPEG (turned upright, metadata such
+as GPS dropped). A publish ships only the uploads in use, so a deleted photo is also gone
+by direct URL; unused files are removed from `content/uploads` a day later. **Publish** runs `ng build` with the current
 content into a new release folder and atomically switches `current` to it, so the
 prerendered HTML (what Google sees) always matches the content.
 
@@ -56,7 +58,7 @@ Security: one account (`ADMIN_EMAIL` + `ADMIN_PASSWORD_HASH`, a salted scrypt ha
 the password itself is never stored), HttpOnly + Secure + SameSite=Strict session
 cookie (8 h, server-side, cleared on restart), a custom header + Origin check against
 CSRF, 5 failed logins per 15 minutes per IP, and strict validation (texts may change
-values but not structure; image paths are whitelisted; uploads must be JPEG).
+values but not structure; image paths are whitelisted; uploads must decode as images).
 `/admin/` is `noindex` (meta tag, `X-Robots-Tag`) and disallowed in `robots.txt`.
 
 Local:

@@ -1,6 +1,11 @@
 import { randomBytes } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import sharp from 'sharp';
+
+// One image at a time, no libvips cache: a 25 MB original decodes to a few hundred MB.
+sharp.cache(false);
+sharp.concurrency(1);
 
 export const LOCALES = ['ro', 'en', 'de'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -24,6 +29,13 @@ const MAX_CAPTION = 300;
 const MAX_GALLERY = 500;
 /** Seed images shipped with the site, or files uploaded from the admin. */
 const IMAGE_PATH = /^(images\/[a-z0-9][a-z0-9/_-]*\.jpg|uploads\/[a-f0-9]{16}\.jpg)$/;
+/** Uploaded originals are shrunk to these long edges (site photo + 800px gallery copy). */
+export const UPLOAD_FULL_EDGE = 2000;
+export const UPLOAD_THUMB_EDGE = 800;
+/** Largest original accepted, in bytes and in pixels (100 MP covers any phone or camera). */
+export const MAX_UPLOAD_BYTES = 25 * 1024 * 1024;
+const MAX_UPLOAD_PIXELS = 100_000_000;
+const UPLOAD_FORMATS = new Set(['jpeg', 'png', 'webp', 'avif', 'heif', 'tiff', 'gif']);
 
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
@@ -158,15 +170,39 @@ export class ContentStore {
     return !!a && !!b && existsSync(a) && existsSync(b);
   }
 
-  /** Stores an uploaded photo (full + 800px copy, both JPEG) under a random name. */
-  saveUpload(full: Buffer, thumb: Buffer): Image {
-    const size = jpegSize(full);
-    if (!size || !jpegSize(thumb)) throw new ValidationError('upload: not a JPEG image');
-    if (Math.max(size.width, size.height) > 4000) throw new ValidationError('upload: image too large');
+  /**
+   * Stores an uploaded photo under a random name: the original (JPEG, PNG, WebP, AVIF, TIFF…,
+   * any size up to MAX_UPLOAD_BYTES) is turned upright and shrunk to a 2000px + an 800px
+   * JPEG. Metadata such as GPS is dropped; colours are converted to sRGB.
+   */
+  async saveUpload(original: Buffer): Promise<Image> {
+    const input = { limitInputPixels: MAX_UPLOAD_PIXELS, failOn: 'error' as const };
+    let format: string | undefined;
+    try {
+      format = (await sharp(original, input).metadata()).format;
+    } catch {
+      throw new ValidationError('upload: not an image');
+    }
+    if (!format || !UPLOAD_FORMATS.has(format)) throw new ValidationError('upload: unsupported image format');
+    const render = (edge: number, quality: number) =>
+      sharp(original, input)
+        .rotate()
+        .resize({ width: edge, height: edge, fit: 'inside', withoutEnlargement: true })
+        .flatten({ background: '#ffffff' })
+        .jpeg({ quality, mozjpeg: true })
+        .toBuffer({ resolveWithObject: true });
+    let full, thumb;
+    try {
+      full = await render(UPLOAD_FULL_EDGE, 82);
+      thumb = await render(UPLOAD_THUMB_EDGE, 80);
+    } catch (err) {
+      const tooBig = err instanceof Error && /pixel limit/i.test(err.message);
+      throw new ValidationError(tooBig ? 'upload: image too large' : 'upload: the image could not be read');
+    }
     const id = randomBytes(8).toString('hex');
-    writeFileSync(this.path('uploads', 'w800', `${id}.jpg`), thumb, { flag: 'wx' });
-    writeFileSync(this.path('uploads', `${id}.jpg`), full, { flag: 'wx' });
-    return { file: `uploads/${id}.jpg`, ...size };
+    writeFileSync(this.path('uploads', 'w800', `${id}.jpg`), thumb.data, { flag: 'wx' });
+    writeFileSync(this.path('uploads', `${id}.jpg`), full.data, { flag: 'wx' });
+    return { file: `uploads/${id}.jpg`, width: full.info.width, height: full.info.height };
   }
 
   /** Deletes uploads no longer used anywhere (older than `minAgeMs`, so fresh, unsaved uploads survive). */
@@ -185,27 +221,4 @@ export class ContentStore {
     }
     return removed;
   }
-}
-
-/** Width/height from a baseline or progressive JPEG (SOF marker), or null if not a JPEG. */
-export function jpegSize(buf: Buffer): { width: number; height: number } | null {
-  if (buf.length < 4 || buf[0] !== 0xff || buf[1] !== 0xd8) return null;
-  let i = 2;
-  while (i + 9 < buf.length) {
-    if (buf[i] !== 0xff) return null;
-    const marker = buf[i + 1];
-    if (marker === 0xd8 || (marker >= 0xd0 && marker <= 0xd7) || marker === 0x01) {
-      i += 2;
-      continue;
-    }
-    const length = buf.readUInt16BE(i + 2);
-    const isSof = marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc;
-    if (isSof) {
-      const height = buf.readUInt16BE(i + 5);
-      const width = buf.readUInt16BE(i + 7);
-      return width && height ? { width, height } : null;
-    }
-    i += 2 + length;
-  }
-  return null;
 }

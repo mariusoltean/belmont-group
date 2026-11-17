@@ -5,13 +5,14 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { after, before, describe, it } from 'node:test';
 import { checkCredentials, hashPassword, LoginLimiter, SessionStore, verifyPassword } from './lib/auth.ts';
-import { jpegSize, validateDictionary } from './lib/content.ts';
+import sharp from 'sharp';
+import { validateDictionary } from './lib/content.ts';
 import { buildSitemap } from './lib/sitemap.ts';
 import { createAdminServer } from './server.ts';
 
 const REPO = join(import.meta.dirname, '..');
-// Smallest valid-looking JPEG header: SOI + SOF0 with 3x2 px.
-const JPEG = Buffer.from([0xff, 0xd8, 0xff, 0xc0, 0x00, 0x11, 0x08, 0x00, 0x02, 0x00, 0x03, 0x03, 1, 0x22, 0, 2, 0x11, 1, 3, 0x11, 1, 0xff, 0xd9]);
+const photo = (width: number, height: number) =>
+  sharp({ create: { width, height, channels: 3, background: '#7a5c3a' } });
 
 describe('auth', () => {
   const hash = hashPassword('correct horse battery');
@@ -63,10 +64,6 @@ describe('content validation', () => {
     assert.throws(() => validateDictionary({ ...current, a: 'x'.repeat(6000) }, current));
   });
 
-  it('reads JPEG dimensions and rejects other files', () => {
-    assert.deepEqual(jpegSize(JPEG), { width: 3, height: 2 });
-    assert.equal(jpegSize(Buffer.from('<svg/>')), null);
-  });
 
   it('builds a sitemap with each image once', () => {
     const xml = buildSitemap([{ file: 'a.jpg' }, { file: 'a.jpg' }, { file: 'b.jpg' }], new Date('2026-01-02'));
@@ -155,20 +152,33 @@ describe('admin HTTP API', () => {
     assert.equal((await call('/admin/api/i18n/fr', { method: 'PUT', cookie, body: '{}' })).status, 404);
   });
 
-  it('uploads a JPEG, adds it to the gallery and refuses unknown files', async () => {
+  it('shrinks uploaded originals on the server and refuses non-images', async () => {
     const cookie = await login();
-    const up = await call('/admin/api/uploads', {
-      method: 'POST',
-      cookie,
-      body: JSON.stringify({ full: JPEG.toString('base64'), thumb: JPEG.toString('base64') }),
-    });
+    const upload = (body: Buffer, type: string) =>
+      call('/admin/api/uploads', { method: 'POST', cookie, body: new Uint8Array(body), headers: { 'Content-Type': type } });
+
+    // A big PNG becomes a 2000px JPEG + an 800px copy.
+    const up = await upload(await photo(4000, 3000).png().toBuffer(), 'image/png');
     assert.equal(up.status, 201);
     const image = (await up.json()) as { file: string; width: number; height: number };
     assert.match(image.file, /^uploads\/[a-f0-9]{16}\.jpg$/);
-    assert.deepEqual([image.width, image.height], [3, 2]);
+    assert.deepEqual([image.width, image.height], [2000, 1500]);
+    const stored = join(dir, 'content', image.file);
+    const full = await sharp(readFileSync(stored)).metadata();
+    const thumb = await sharp(readFileSync(stored.replace('/uploads/', '/uploads/w800/'))).metadata();
+    assert.deepEqual([full.format, full.width, full.height], ['jpeg', 2000, 1500]);
+    assert.deepEqual([thumb.format, thumb.width, thumb.height], ['jpeg', 800, 600]);
 
-    const bad = await call('/admin/api/uploads', { method: 'POST', cookie, body: JSON.stringify({ full: 'PHN2Zz4=', thumb: 'PHN2Zz4=' }) });
-    assert.equal(bad.status, 400);
+    // EXIF orientation is applied (a sideways phone photo comes out upright) and dropped; small images are not enlarged.
+    const sideways = await photo(600, 400).jpeg().withMetadata({ orientation: 6 }).toBuffer();
+    const upright = (await (await upload(sideways, 'image/jpeg')).json()) as { file: string; width: number; height: number };
+    assert.deepEqual([upright.width, upright.height], [400, 600]);
+    assert.equal((await sharp(readFileSync(join(dir, 'content', upright.file))).metadata()).orientation, undefined);
+
+    assert.equal((await upload(Buffer.from('<svg/>'), 'image/svg+xml')).status, 400);
+    assert.equal((await upload(Buffer.from('not an image'), 'image/jpeg')).status, 400);
+    assert.equal((await call('/admin/api/uploads', { method: 'POST', cookie, body: '{}' })).status, 415);
+    assert.equal((await upload(Buffer.alloc(26 * 1024 * 1024), 'image/jpeg')).status, 413);
 
     const gallery = [{ ...image, caption: { ro: 'Nou', en: '', de: '' } }];
     assert.equal((await call('/admin/api/gallery', { method: 'PUT', cookie, body: JSON.stringify(gallery) })).status, 200);

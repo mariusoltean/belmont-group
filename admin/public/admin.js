@@ -251,36 +251,46 @@ $('#save-texts').addEventListener('click', async () => {
   }
 });
 
-// ---------- Image upload (resized in the browser) ----------
-async function resizeToJpeg(bitmap, maxEdge, quality) {
-  const scale = Math.min(1, maxEdge / Math.max(bitmap.width, bitmap.height));
-  const w = Math.round(bitmap.width * scale);
-  const h = Math.round(bitmap.height * scale);
+// ---------- Image upload (shrunk on the server) ----------
+/** Formats the server reads directly; anything else (e.g. iPhone HEIC) is converted here first. */
+const SERVER_FORMATS = ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/tiff', 'image/gif'];
+const MAX_UPLOAD = 25 * 1024 * 1024;
+
+/** Re-encodes a file the server can't read (or that is over 25 MB) as a high-quality JPEG. */
+async function toJpeg(file) {
+  const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' }).catch(() => {
+    throw new Error(`${file.name}: formatul nu poate fi citit (folosiți JPG, PNG sau WebP).`);
+  });
+  const scale = Math.min(1, 4000 / Math.max(bitmap.width, bitmap.height));
   const canvas = document.createElement('canvas');
-  canvas.width = w;
-  canvas.height = h;
+  canvas.width = Math.round(bitmap.width * scale);
+  canvas.height = Math.round(bitmap.height * scale);
   const ctx = canvas.getContext('2d');
   ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(bitmap, 0, 0, w, h);
-  const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', quality));
-  const dataUrl = await new Promise((r) => {
-    const reader = new FileReader();
-    reader.onload = () => r(reader.result);
-    reader.readAsDataURL(blob);
-  });
-  return String(dataUrl).split(',')[1];
+  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  bitmap.close();
+  return new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.92));
 }
 
-/** Resizes a picked file to 1600px + 800px JPEGs (also drops EXIF/GPS) and uploads it. */
+/** Uploads a picked photo; the server makes the 2000px + 800px JPEGs (and drops EXIF/GPS). */
 async function uploadFile(file) {
   if (!file.type.startsWith('image/')) throw new Error(`${file.name}: nu este o imagine.`);
-  const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' }).catch(() => {
-    throw new Error(`${file.name}: formatul nu poate fi citit (folosiți JPG sau PNG).`);
+  const body = SERVER_FORMATS.includes(file.type) && file.size <= MAX_UPLOAD ? file : await toJpeg(file);
+  if (body.size > MAX_UPLOAD) throw new Error(`${file.name}: imaginea este prea mare (maximum 25 MB).`);
+  const res = await fetch('/admin/api/uploads', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': body.type || 'image/jpeg', 'X-Requested-With': 'belmont-admin' },
+    body,
   });
-  const full = await resizeToJpeg(bitmap, 1600, 0.85);
-  const thumb = await resizeToJpeg(bitmap, 800, 0.8);
-  bitmap.close();
-  return api('uploads', { method: 'POST', body: { full, thumb } });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401) {
+    showLogin();
+    throw new Error('Sesiunea a expirat. Intrați din nou în cont.');
+  }
+  if (res.status === 413) throw new Error(`${file.name}: imaginea este prea mare (maximum 25 MB).`);
+  if (!res.ok) throw new Error(`${file.name}: ${data.error || `Eroare ${res.status}`}`);
+  return data;
 }
 
 function pickFile(multiple = false) {

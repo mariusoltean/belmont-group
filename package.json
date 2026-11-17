@@ -10,7 +10,7 @@
     "serve:dist": "http-server dist/belmont-group/browser -p 4300 -c-1",
     "admin": "node admin/server.ts",
     "admin:hash": "node admin/hash-password.ts",
-    "test:admin": "node --test admin/",
+    "test:admin": "node --test admin/*.test.ts",
     "typecheck:admin": "tsc -p admin/tsconfig.json",
     "admin:dev": "SERVE_SITE=1 PORT=4310 node --env-file=.env admin/server.ts"
   },
@@ -28,6 +28,7 @@
     "@fontsource/cormorant-garamond": "^5.3.0",
     "@fontsource/figtree": "^5.3.0",
     "rxjs": "~7.8.0",
+    "sharp": "^0.34.5",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

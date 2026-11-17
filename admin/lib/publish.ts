@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildSitemap, type SitemapImage } from './sitemap.ts';
 
@@ -92,6 +92,7 @@ export class Publisher {
       const browserDir = join(releaseDir, 'browser');
       if (!existsSync(join(browserDir, 'index.html'))) throw new Error('build produced no index.html');
       this.writeSitemap(browserDir);
+      this.dropUnusedUploads(browserDir);
       this.activate(join('releases', id, 'browser'));
       this.pruneReleases(id);
       this.writeState({ publishedAt: startedAt });
@@ -128,13 +129,29 @@ export class Publisher {
     });
   }
 
-  private writeSitemap(browserDir: string): void {
+  private usedImages(): SitemapImage[] {
     const read = <T>(f: string) => JSON.parse(readFileSync(join(this.appDir, 'content', f), 'utf8')) as T;
-    const images = [
-      ...Object.values(read<Record<string, SitemapImage>>('images.json')),
-      ...read<SitemapImage[]>('gallery.json'),
-    ];
-    writeFileSync(join(browserDir, 'sitemap.xml'), buildSitemap(images));
+    return [...Object.values(read<Record<string, SitemapImage>>('images.json')), ...read<SitemapImage[]>('gallery.json')];
+  }
+
+  private writeSitemap(browserDir: string): void {
+    writeFileSync(join(browserDir, 'sitemap.xml'), buildSitemap(this.usedImages()));
+  }
+
+  /**
+   * The build copies every file in content/uploads; drop the ones no page uses, so a photo
+   * deleted in the admin is gone from the site (also by direct URL) on this publish. The files
+   * themselves stay in content/ for a day (see ContentStore.removeUnusedUploads).
+   */
+  private dropUnusedUploads(browserDir: string): void {
+    const used = new Set(this.usedImages().map((i) => i.file));
+    for (const dir of ['uploads', 'uploads/w800']) {
+      const abs = join(browserDir, dir);
+      if (!existsSync(abs)) continue;
+      for (const name of readdirSync(abs)) {
+        if (name.endsWith('.jpg') && !used.has(`uploads/${name}`)) unlinkSync(join(abs, name));
+      }
+    }
   }
 
   /** Atomic switch: create a new symlink next to `current`, then rename it over. */

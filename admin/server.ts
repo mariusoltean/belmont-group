@@ -1,10 +1,10 @@
 // Belmont Group admin: edit texts, gallery and main photos, then publish (rebuild) the site.
-// No runtime dependencies: Node's http module, run with `node admin/server.ts` (type stripping).
+// Node's http module (run with `node admin/server.ts`, type stripping); `sharp` shrinks uploaded photos.
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { extname, join, normalize, resolve } from 'node:path';
 import { checkCredentials, LoginLimiter, SessionStore, type AdminAccount } from './lib/auth.ts';
-import { ContentStore, isLocale, LOCALES, ValidationError } from './lib/content.ts';
+import { ContentStore, isLocale, LOCALES, MAX_UPLOAD_BYTES, ValidationError } from './lib/content.ts';
 import { Publisher } from './lib/publish.ts';
 
 export interface AdminConfig {
@@ -103,6 +103,29 @@ export function createAdminServer(config: AdminConfig) {
     });
   }
 
+  /** A raw image upload (`Content-Type: image/*`), refused early when it is over `limit` bytes. */
+  function readImage(req: IncomingMessage, limit: number): Promise<Buffer> {
+    return new Promise((ok, fail) => {
+      const type = req.headers['content-type'] ?? '';
+      if (!type.startsWith('image/')) return fail(new HttpError(415, 'Image expected'));
+      if (Number(req.headers['content-length'] ?? 0) > limit) {
+        req.resume();
+        return fail(new HttpError(413, 'Imaginea este prea mare (maximum 25 MB).'));
+      }
+      let size = 0;
+      const chunks: Buffer[] = [];
+      req.on('data', (c: Buffer) => {
+        size += c.length;
+        if (size > limit) {
+          fail(new HttpError(413, 'Imaginea este prea mare (maximum 25 MB).'));
+          req.destroy();
+        } else chunks.push(c);
+      });
+      req.on('end', () => ok(Buffer.concat(chunks)));
+      req.on('error', fail);
+    });
+  }
+
   /** CSRF: state-changing calls need our custom header (cross-site forms can't send it) and a same-origin Origin. */
   function checkCsrf(req: IncomingMessage): void {
     if (req.headers['x-requested-with'] !== 'belmont-admin') throw new HttpError(403, 'Forbidden');
@@ -197,9 +220,7 @@ export function createAdminServer(config: AdminConfig) {
     }
 
     if (path === 'uploads' && method === 'POST') {
-      const body = (await readBody(req, 20 * 1024 * 1024)) as { full?: unknown; thumb?: unknown };
-      if (typeof body.full !== 'string' || typeof body.thumb !== 'string') throw new HttpError(400, 'Missing image');
-      const image = content.saveUpload(Buffer.from(body.full, 'base64'), Buffer.from(body.thumb, 'base64'));
+      const image = await content.saveUpload(await readImage(req, MAX_UPLOAD_BYTES));
       return send(res, 201, image);
     }
 
