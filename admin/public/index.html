@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Administrare · Belmont Group</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <script type="module" src="/admin/admin.js"></script>
+  </head>
+  <body>
+    <!-- Sign in -->
+    <main id="login" class="login" hidden>
+      <form id="login-form" class="login-card" novalidate>
+        <img src="/admin/logo.png" alt="Belmont Group Angus Farms" class="login-logo" width="164" height="120" />
+        <h1>Administrare site</h1>
+        <label for="login-email">E-mail</label>
+        <input id="login-email" type="email" autocomplete="username" required />
+        <label for="login-password">Parolă</label>
+        <input id="login-password" type="password" autocomplete="current-password" required />
+        <p id="login-error" class="error" role="alert"></p>
+        <button type="submit" class="btn btn-primary">Intră în cont</button>
+      </form>
+    </main>
+
+    <!-- Editor -->
+    <div id="app" hidden>
+      <header class="topbar">
+        <div class="topbar-inner">
+          <strong class="brand">Belmont Group · Administrare</strong>
+          <span id="publish-state" class="chip" role="status"></span>
+          <div class="topbar-actions">
+            <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">Vezi site-ul</a>
+            <button id="publish" type="button" class="btn btn-primary">Publică site-ul</button>
+            <button id="logout" type="button" class="btn btn-ghost">Ieșire</button>
+          </div>
+        </div>
+        <nav class="tabs" role="tablist" aria-label="Secțiuni">
+          <button type="button" role="tab" class="tab" data-tab="texts" aria-selected="true">Texte</button>
+          <button type="button" role="tab" class="tab" data-tab="gallery" aria-selected="false">Galerie</button>
+          <button type="button" role="tab" class="tab" data-tab="images" aria-selected="false">Fotografii principale</button>
+        </nav>
+      </header>
+
+      <main class="content">
+        <p id="notice" class="notice" role="status" hidden></p>
+
+        <section id="tab-texts" class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Texte</h2>
+              <p class="hint">Modificați textele site-ului în fiecare limbă. Salvați, apoi apăsați „Publică site-ul”.</p>
+            </div>
+            <div class="panel-actions">
+              <div class="seg" role="group" aria-label="Limbă">
+                <button type="button" class="seg-btn" data-locale="ro" aria-pressed="true">RO</button>
+                <button type="button" class="seg-btn" data-locale="en" aria-pressed="false">EN</button>
+                <button type="button" class="seg-btn" data-locale="de" aria-pressed="false">DE</button>
+              </div>
+              <button id="save-texts" type="button" class="btn btn-primary" disabled>Salvează textele</button>
+            </div>
+          </div>
+          <div id="texts"></div>
+        </section>
+
+        <section id="tab-gallery" class="panel" hidden>
+          <div class="panel-head">
+            <div>
+              <h2>Galerie</h2>
+              <p class="hint">Adăugați, înlocuiți, ștergeți sau reordonați fotografiile. Descrierea în română este obligatorie.</p>
+            </div>
+            <div class="panel-actions">
+              <label class="btn btn-ghost file-btn">
+                Adaugă fotografii
+                <input id="gallery-add" type="file" accept="image/*" multiple />
+              </label>
+              <button id="save-gallery" type="button" class="btn btn-primary" disabled>Salvează galeria</button>
+            </div>
+          </div>
+          <p id="gallery-count" class="hint"></p>
+          <ol id="gallery" class="gallery"></ol>
+        </section>
+
+        <section id="tab-images" class="panel" hidden>
+          <div class="panel-head">
+            <div>
+              <h2>Fotografii principale</h2>
+              <p class="hint">Fotografiile fixe ale paginii. Textul alternativ (descrierea) se schimbă din „Texte”.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="save-images" type="button" class="btn btn-primary" disabled>Salvează fotografiile</button>
+            </div>
+          </div>
+          <div id="slots" class="slots"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

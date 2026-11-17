@@ -36,9 +36,11 @@
       </button>
       <img
         class="lightbox-img"
-        [src]="current().medium"
-        [attr.srcset]="current().medium + ' 1200w, ' + current().src + ' 1800w'"
+        [src]="current().src"
+        [attr.srcset]="current().thumb + ' 800w, ' + current().src + ' 1600w'"
         sizes="min(1100px, 100vw)"
+        [width]="current().width"
+        [height]="current().height"
         [alt]="current().caption"
       />
       <div class="lightbox-bar">

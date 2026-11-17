@@ -39,7 +39,8 @@ import { SiteFooterComponent } from './sections/site-footer/site-footer.componen
       <app-angus />
       <app-team />
       <app-region />
-      <app-gallery />
+      <!-- 86 photos: load 8 more per click instead of the design 4 -->
+      <app-gallery [pageSize]="8" />
       <app-contact />
     </main>
     <app-site-footer />

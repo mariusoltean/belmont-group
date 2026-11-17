@@ -2,7 +2,6 @@
   <div class="inner">
     <div class="split">
       <div class="text">
-        <p class="eyebrow">{{ 'hero.eyebrow' | t }}</p>
         <h1 class="title">{{ 'hero.title' | t }}</h1>
         <p class="lead">{{ 'hero.lead' | t }}</p>
         <p class="copy">{{ 'hero.copy' | t }}</p>
@@ -13,12 +12,12 @@
       </div>
       <div class="photo">
         <img
-          src="images/photo-01.jpg"
-          srcset="images/w800/photo-01.jpg 800w, images/w1200/photo-01.jpg 1200w, images/photo-01.jpg 1800w"
+          [src]="image.file"
+          [attr.srcset]="srcset"
           sizes="(min-width: 1040px) 544px, calc(100vw - 40px)"
           [alt]="'hero.imageAlt' | t"
-          width="1800"
-          height="1381"
+          [width]="image.width"
+          [height]="image.height"
           fetchpriority="high"
           loading="eager"
           decoding="async"

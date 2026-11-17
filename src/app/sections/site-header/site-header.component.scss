@@ -3,6 +3,7 @@
 }
 
 .header {
+  position: relative;
   font-family: var(--font-text);
   color: var(--color-ink);
   background: var(--color-header-bg);
@@ -40,12 +41,12 @@
 
 .logo {
   display: block;
-  height: 72px;
+  height: 120px; // full logo incl. its tagline line (client asked for 120px)
   width: auto;
   transition: height var(--header-transition);
 
   .is-compact & {
-    height: 52px;
+    height: 72px;
   }
 }
 
@@ -53,7 +54,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0 28px;
+  gap: 0 24px;
   flex: 1 1 auto;
   justify-content: center;
 }
@@ -141,4 +142,111 @@
   width: 0;
   background: var(--color-bronze);
   transition: width 0.12s linear;
+}
+
+// Only shown in the mobile menu.
+.nav-cta,
+.menu-btn {
+  display: none;
+}
+
+// ---------- Mobile / tablet: logo, language and a menu button in one row ----------
+@media (max-width: 1099.98px) {
+  .row {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .logo {
+    height: 64px;
+
+    .is-compact & {
+      height: 48px;
+    }
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
+  .lang-btn {
+    min-width: 40px;
+    padding: 0 8px;
+  }
+
+  .cta {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--color-forest);
+    cursor: pointer;
+
+    .menu-open & {
+      background: var(--color-forest);
+      border-color: var(--color-forest);
+      color: var(--color-cream);
+    }
+  }
+
+  // The nav drops down as a panel under the header.
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding: 8px var(--section-pad-x) 24px;
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-line);
+    box-shadow: 0 16px 32px rgba(28, 35, 28, 0.14);
+
+    &.is-open {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    min-height: 52px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: none;
+
+    &.is-current {
+      box-shadow: inset 3px 0 0 var(--color-bronze);
+      padding-left: 12px;
+    }
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    height: var(--button-height);
+    margin-top: 20px;
+    padding: 0 28px;
+    border-radius: var(--radius);
+    background: var(--color-forest);
+    color: var(--color-cream);
+    font-size: var(--text-button);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
 }

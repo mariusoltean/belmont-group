@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "file": "images/farm/all-eyes-on-me.jpg",
+    "width": 1600,
+    "height": 1200
+  },
+  "angus": {
+    "file": "images/farm/cow-and-two-calves.jpg",
+    "width": 1600,
+    "height": 900
+  },
+  "romania": {
+    "file": "images/photo-11.jpg",
+    "width": 1600,
+    "height": 1063
+  },
+  "transylvania": {
+    "file": "images/photo-14.jpg",
+    "width": 1800,
+    "height": 1200
+  }
+}

@@ -1,5 +1,8 @@
 # Belmont Group website — Angular build brief
 
+> **Note (after the handoff):** editable content moved to `content/` (`content/i18n/*.json`, `content/gallery.json` with inline captions, `content/images.json`), managed from the admin in `admin/` — see README.
+
+
 This folder is the handoff for turning the approved Belmont Group design into an Angular project. Read this file first; everything it references is in this folder.
 
 ## Goal

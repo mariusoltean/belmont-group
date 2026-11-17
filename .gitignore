@@ -42,3 +42,10 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Admin
+.env
+/site-releases
+content/.publish-state.json
+content/uploads/*.jpg
+content/uploads/w800/*.jpg

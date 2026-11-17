@@ -3,7 +3,10 @@ import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { Meta, Title } from '@angular/platform-browser';
-import { I18nService, LOCALE_STORAGE_KEY, resolveKey } from './i18n.service';
+import { I18nService, LOCALE_STORAGE_KEY, isLocale, resolveKey } from './i18n.service';
+import ro from '../../../content/i18n/ro.json';
+import en from '../../../content/i18n/en.json';
+import de from '../../../content/i18n/de.json';
 import { TranslatePipe } from './t.pipe';
 
 const RO = {
@@ -38,6 +41,25 @@ describe('resolveKey', () => {
     expect(resolveKey(RO, 'region.romania.kicker')).toBe('România');
     expect(resolveKey(RO, 'hero.missing.deep')).toBeUndefined();
     expect(resolveKey(undefined, 'hero')).toBeUndefined();
+  });
+});
+
+describe('locales', () => {
+  it('accepts ro, en and de only', () => {
+    expect(['ro', 'en', 'de'].every(isLocale)).toBe(true);
+    expect(isLocale('fr')).toBe(false);
+    expect(isLocale(undefined)).toBe(false);
+  });
+
+  it('has the same keys and list lengths in every dictionary', () => {
+    const shape = (d: unknown): unknown =>
+      Array.isArray(d)
+        ? d.map(shape)
+        : d && typeof d === 'object'
+          ? Object.fromEntries(Object.entries(d).map(([k, v]) => [k, shape(v)]).sort())
+          : typeof d;
+    expect(shape(en)).toEqual(shape(ro));
+    expect(shape(de)).toEqual(shape(ro));
   });
 });
 
@@ -93,7 +115,7 @@ describe('I18nService', () => {
     expect(first.service.locale()).toBe('en');
 
     TestBed.resetTestingModule();
-    localStorage.setItem(LOCALE_STORAGE_KEY, 'de');
+    localStorage.setItem(LOCALE_STORAGE_KEY, 'fr');
     const second = setup();
     await flushInit(second.service, second.http, 'ro');
     expect(second.service.locale()).toBe('ro');

@@ -11,6 +11,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ContactService } from '../../core/contact.service';
 import { RevealDirective } from '../../core/reveal.directive';
 import { TranslatePipe } from '../../core/t.pipe';
+import { toTelHref } from '../../core/phone';
 
 type Status = 'idle' | 'sending' | 'sent' | 'failed';
 type Field = 'name' | 'email' | 'message';
@@ -67,6 +68,11 @@ export class ContactComponent {
     } catch {
       this.status.set('failed');
     }
+  }
+
+  /** `0743 573 008` → `tel:+40743573008`. */
+  protected telHref(phone: string): string {
+    return toTelHref(phone);
   }
 
   protected onBlur(): void {

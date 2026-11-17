@@ -7,11 +7,11 @@
       <dl class="details">
         <div class="detail">
           <dt>{{ 'contact.emailLabel' | t }}</dt>
-          <dd>{{ 'contact.emailValue' | t }}</dd>
+          <dd><a [href]="'mailto:' + ('contact.emailValue' | t)">{{ 'contact.emailValue' | t }}</a></dd>
         </div>
         <div class="detail">
           <dt>{{ 'contact.phoneLabel' | t }}</dt>
-          <dd>{{ 'contact.phoneValue' | t }}</dd>
+          <dd><a [href]="telHref('contact.phoneValue' | t)">{{ 'contact.phoneValue' | t }}</a></dd>
         </div>
         <div class="detail last">
           <dt>{{ 'contact.addressLabel' | t }}</dt>

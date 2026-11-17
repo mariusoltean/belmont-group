@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "title": "Belmont Group | Weidegehaltene Angus-Rinder aus Siebenbürgen",
+    "description": "Reinrassige Angus-Rinder, aufgezogen auf zertifizierten Bioweiden in Siebenbürgen, Rumänien."
+  },
+  "about": {
+    "kicker": "Wer wir sind",
+    "title": "Aufgewachsen auf Bioweiden im Herzen Siebenbürgens.",
+    "farmsLabel": "Unsere Höfe",
+    "p1": "Belmont Group züchtet reinrassige Angus-Rinder auf zertifizierten Bioweiden in den siebenbürgischen Dörfern Glâmboaca, Colun und Săsăuș in Rumänien. Wir bewirtschaften eigene und gepachtete Flächen und bauen unser Futter selbst an, um die Herde das ganze Jahr über zu versorgen.",
+    "p2": "Als Mutterkuhbetrieb erzeugen wir Fleischrinder durch natürliche Weidehaltung — ganz ohne Hormone und künstliche Zusatzstoffe. Unser Team arbeitet mit der Natur: Die Tiere wachsen in einer ruhigen, stressfreien Umgebung auf, die dem natürlichen Rhythmus des Landes folgt.",
+    "p3": "Belmont Group ist vollständig im Besitz einer Schweizer Familie."
+  },
+  "angus": {
+    "kicker": "Die Angus-Rasse",
+    "title": "Angus: robust, ruhig, effizient — und von Natur aus für erstklassiges Rindfleisch gemacht.",
+    "intro": "Die Angus-Rasse stammt aus Schottland und wird für ihre hervorragende Fleischqualität, ihre Pflegeleichtigkeit, Robustheit, Fruchtbarkeit und natürliche Anpassungsfähigkeit geschätzt.",
+    "imageAlt": "Eine Angus-Kuh mit zwei Kälbern auf der Weide",
+    "traits": [
+      {
+        "title": "Black-Angus-Charakter",
+        "text": "Robuste Tiere für offene Weiden und wechselhaftes Wetter."
+      },
+      {
+        "title": "Fütterung mit Gras",
+        "text": "Im Sommer Weidegang, im Winter Heu und Silage von Belmont-Flächen."
+      },
+      {
+        "title": "Ruhiges Herdenleben",
+        "text": "Stressarmer Umgang fördert Tierwohl und Qualität."
+      },
+      {
+        "title": "Erstklassige Genetik",
+        "text": "Ausgewählt auf Fruchtbarkeit, Muttereigenschaften und Fleischqualität."
+      }
+    ],
+    "benefitsLabel": "Warum Angus",
+    "benefits": [
+      {
+        "title": "Hervorragende Fleischqualität",
+        "text": "Natürlich marmoriert, zart und saftig."
+      },
+      {
+        "title": "Anpassung an das Klima",
+        "text": "Gedeiht auch bei rauem Wetter und in unterschiedlichen Umgebungen."
+      },
+      {
+        "title": "Futtereffizienz",
+        "text": "Verwertet Weidegras effizient zu Muskelmasse."
+      },
+      {
+        "title": "Pflegeleicht",
+        "text": "Ruhiges Temperament und genetisch hornlos."
+      },
+      {
+        "title": "Ausgezeichnete Mütter",
+        "text": "Gute Milchleistung und gut entwickelte Kälber."
+      },
+      {
+        "title": "Leichte Abkalbung",
+        "text": "Geringere Geburtsgewichte verringern Komplikationen."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Kontakt",
+    "title": "Nehmen Sie Kontakt mit uns auf.",
+    "intro": "Wir freuen uns über Anfragen von Käufern, Händlern, landwirtschaftlichen Partnern und allen, die mehr über Belmont Group erfahren möchten.",
+    "emailLabel": "E-Mail",
+    "emailValue": "office@belmont-group.ro",
+    "phoneLabel": "Telefon",
+    "phoneValue": "0743 573 008",
+    "addressLabel": "Adresse",
+    "addressValue": "Belmont Group, Sibiu, Rumänien",
+    "formTitle": "Kontaktformular",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Nachricht senden",
+    "sent": "Vielen Dank! Ihre Nachricht wurde gesendet.",
+    "sending": "Wird gesendet…",
+    "failed": "Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "errors": {
+      "nameRequired": "Bitte geben Sie Ihren Namen ein.",
+      "emailRequired": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "messageRequired": "Bitte schreiben Sie eine Nachricht."
+    }
+  },
+  "gallery": {
+    "kicker": "Galerie",
+    "title": "Belmont Angus auf den Bioweiden Siebenbürgens.",
+    "open": "Foto vergrößern",
+    "close": "Schließen",
+    "prev": "Vorheriges Foto",
+    "next": "Nächstes Foto",
+    "loadMore": "Weitere Fotos laden",
+    "countOf": "von",
+    "countUnit": "Fotos"
+  },
+  "hero": {
+    "title": "Weidegehaltene Angus-Rinder aus Siebenbürgen.",
+    "lead": "„Auf der Weide geboren, mit Respekt aufgezogen.“",
+    "copy": "Reinrassige Angus-Rinder, im Freien auf zertifizierten Bioweiden in Siebenbürgen aufgezogen — mit langsamem Wachstum, natürlichem Futter und einem klaren Fokus auf Tierwohl und Fleischqualität.",
+    "ctaPrimary": "Unsere Geschichte",
+    "ctaSecondary": "Kontaktieren Sie uns",
+    "imageAlt": "Die Belmont-Angus-Herde auf der Weide",
+    "facts": [
+      {
+        "title": "Reinrassige Angus",
+        "text": "Ausgewählt auf ruhiges Temperament, Fruchtbarkeit und gute Leistung auf der Weide."
+      },
+      {
+        "title": "Bioweiden",
+        "text": "Aufgezogen mit Gras, Heu und Silage von unseren eigenen Flächen."
+      },
+      {
+        "title": "Natürliche Fleischqualität",
+        "text": "Langsames, stressarmes Wachstum fördert Zartheit, Geschmack und Marmorierung."
+      }
+    ]
+  },
+  "philosophy": {
+    "quote": "„Was unsere Rinder fressen, bestimmt ihre Gesundheit. Ihre Gesundheit bestimmt die Qualität des Fleisches.“",
+    "kicker": "Unsere Philosophie",
+    "title": "Zurück zum Echten.",
+    "p1": "Bei Belmont Group setzen wir auf extensive Landwirtschaft mit geringer Intensität. Im Sommer grasen unsere Rinder ausschließlich frisches Gras. Im Winter bekommen sie Heu und Silage, die vollständig auf unseren eigenen Flächen erzeugt werden.",
+    "p2": "Rinder, die im Freien leben, sich frei bewegen und sich von natürlichen Weiden ernähren, liefern ehrliches Fleisch: nährstoffreich, gut bekömmlich und im besten Sinne des Wortes natürlich.",
+    "p3": "Belmont Group steht für eine verantwortungsvolle, maßvolle und hochwertige Landbewirtschaftung mit Schwerpunkt auf der Lebensmittelerzeugung."
+  },
+  "products": {
+    "kicker": "Produkte",
+    "title": "Aus unserem eigenen Zuchtprogramm.",
+    "lead": "„Auf der Weide geboren, mit Respekt aufgezogen.“",
+    "items": [
+      {
+        "title": "Robuste männliche Absetzer",
+        "text": "Jungrinder, bereit für die Weitermast."
+      },
+      {
+        "title": "Ausgewählte weibliche Zuchtfärsen",
+        "text": "Hochwertige Tiere aus unserem eigenen Bestand."
+      },
+      {
+        "title": "Altkühe",
+        "text": "Aus der Zuchtherde ausgeschieden."
+      }
+    ],
+    "note": "Der Preis richtet sich nach der Qualität des einzelnen Tieres, dem Lebendgewicht und den aktuellen Marktpreisen. Die Tiere sind in der Regel saisonal verfügbar. Wir freuen uns über Anfragen von Landwirten, Händlern und Käufern aus ganz Europa.",
+    "cta": "Verfügbarkeit anfragen"
+  },
+  "region": {
+    "romania": {
+      "kicker": "Rumänien",
+      "title": "Ein dynamisches Land mit tiefen landwirtschaftlichen Wurzeln.",
+      "p1": "Rumänien ist ein dynamisches Land in Osteuropa mit einer reichen Geschichte, einer wachsenden Wirtschaft und tiefen Wurzeln in der Landwirtschaft. Seit dem EU-Beitritt 2007 hat Rumänien große Fortschritte bei Infrastruktur, Investitionen und regionalem Einfluss gemacht.",
+      "p2": "Das Land verfügt über fruchtbare Böden und ist ein bedeutender Agrarproduzent. Die Viehhaltung ist weit verbreitet und tief in der ländlichen Kultur verwurzelt.",
+      "imageAlt": "Blick über ein Flusstal mit Bergen in der Ferne"
+    },
+    "transylvania": {
+      "kicker": "Siebenbürgen",
+      "title": "Saubere Luft, traditionelle Landschaften, natürliche Landwirtschaft.",
+      "p1": "Siebenbürgen ist eine der beliebtesten Regionen Rumäniens — umgeben von den Karpaten und bekannt für sein mittelalterliches Erbe, seine multikulturelle Geschichte und atemberaubende Naturlandschaften.",
+      "p2": "Für Belmont Group ist Siebenbürgen mehr als ein Standort. Die saubere Luft, die traditionelle Agrarlandschaft und die wenig intensive Landnutzung bieten ideale Bedingungen für die extensive Rinderhaltung.",
+      "imageAlt": "Eine Herde ruht auf der Weide vor schneebedeckten Bergen"
+    }
+  },
+  "footer": {
+    "navLabel": "Fußzeilennavigation",
+    "nav": {
+      "about": "Wer wir sind",
+      "philosophy": "Philosophie",
+      "products": "Produkte",
+      "angus": "Angus-Rasse",
+      "team": "Team",
+      "gallery": "Galerie",
+      "contact": "Kontakt"
+    },
+    "rights": "© 2026 Belmont Group. Alle Rechte vorbehalten.",
+    "address": "Sibiu, Rumänien"
+  },
+  "header": {
+    "home": "Belmont Group — Startseite",
+    "navLabel": "Hauptnavigation",
+    "langLabel": "Sprache",
+    "progressLabel": "Lesefortschritt der Seite",
+    "cta": "Kontakt",
+    "nav": {
+      "about": "Wer wir sind",
+      "philosophy": "Philosophie",
+      "products": "Produkte",
+      "angus": "Angus-Rasse",
+      "team": "Team",
+      "gallery": "Galerie"
+    },
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen"
+  },
+  "team": {
+    "kicker": "Unser Team",
+    "title": "Geführt von einem engagierten Leitungsteam.",
+    "intro": "Belmont Group wird von einem kleinen Leitungsteam geführt und von erfahrenen Mitarbeitenden an unseren drei Standorten in Siebenbürgen unterstützt.",
+    "photoPlaceholder": "[FOTO]",
+    "bioPlaceholder": "[KURZBIOGRAFIE]",
+    "members": [
+      {
+        "area": "Strategische Leitung",
+        "name": "[NAME]",
+        "role": "Eigentümer / Geschäftsführer"
+      },
+      {
+        "area": "Glâmboaca & Colun",
+        "name": "Nicu Tămășel",
+        "role": "Betriebsleiter",
+        "email": "nicu.tamasel@belmont-group.ro",
+        "phone": "0743 573 008"
+      },
+      {
+        "area": "Săsăuș",
+        "name": "Liviu Muntean",
+        "role": "Betriebsleiter",
+        "email": "liviu.muntean@belmont-group.ro"
+      }
+    ],
+    "admin": "Verwaltung und zentrale Dienste: Anca Anghelini, Alina Denghel."
+  }
+}

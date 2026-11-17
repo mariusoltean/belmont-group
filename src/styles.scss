@@ -4,6 +4,10 @@
 html {
   scroll-behavior: smooth;
   background: var(--color-cream);
+  // The sticky header shrinks once scrollY > 24px. With scroll anchoring the browser
+  // then shifts the scroll position back under 24px, the header grows again, and the
+  // page jitters endlessly. Turning anchoring off breaks that loop.
+  overflow-anchor: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -9,5 +9,5 @@ import { TranslatePipe } from '../../core/t.pipe';
   styleUrl: './site-footer.component.scss',
 })
 export class SiteFooterComponent {
-  protected readonly links = ['about', 'philosophy', 'products', 'angus', 'gallery', 'contact'];
+  protected readonly links = ['about', 'philosophy', 'products', 'angus', 'team', 'gallery', 'contact'];
 }

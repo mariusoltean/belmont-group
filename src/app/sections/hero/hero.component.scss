@@ -27,10 +27,6 @@
   align-items: flex-start;
 }
 
-.eyebrow {
-  @include s.kicker;
-}
-
 .title {
   margin: 0;
   font-family: var(--font-display);
@@ -91,7 +87,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 45% 50%;
+    object-position: 50% 50%;
     animation: hero-settle var(--hero-zoom-duration) var(--hero-zoom-ease) both;
   }
 }

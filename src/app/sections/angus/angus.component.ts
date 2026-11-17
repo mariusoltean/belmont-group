@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { I18nService } from '../../core/i18n.service';
 import { RevealDirective } from '../../core/reveal.directive';
 import { TranslatePipe } from '../../core/t.pipe';
+import { IMAGES, srcsetOf } from '../../core/content';
 
 interface Entry {
   title: string;
@@ -17,6 +18,8 @@ interface Entry {
 })
 export class AngusComponent {
   private readonly i18n = inject(I18nService);
+  protected readonly image = IMAGES.angus;
+  protected readonly srcset = srcsetOf(IMAGES.angus);
 
   protected readonly traits = computed(() => this.i18n.list<Entry>('angus.traits'));
   protected readonly benefits = computed(() => this.i18n.list<Entry>('angus.benefits'));

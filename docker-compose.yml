@@ -9,9 +9,31 @@ services:
     ports:
       # host:container - cop-gateway reverse-proxies to host.docker.internal:9095
       - "9095:80"
+    volumes:
+      - site:/srv/site:ro
+    depends_on:
+      - admin
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1/"]
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 10s
+      start_period: 90s
+
+  # Admin UI + API at /admin/ (proxied by the nginx above; no port published).
+  # On start it builds the site from the current code + content.
+  admin:
+    build:
+      context: .
+      dockerfile: admin/Dockerfile
+    image: belmont-group-admin:latest
+    container_name: belmont-group-admin
+    restart: unless-stopped
+    env_file: .env # ADMIN_EMAIL, ADMIN_PASSWORD_HASH (see .env.example)
+    volumes:
+      - content:/app/content # texts, gallery, uploaded photos (edited from /admin)
+      - site:/srv/site # published releases
+
+volumes:
+  content:
+  site:

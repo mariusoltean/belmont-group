@@ -2,11 +2,14 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { I18nService } from '../../core/i18n.service';
 import { RevealDirective } from '../../core/reveal.directive';
 import { TranslatePipe } from '../../core/t.pipe';
+import { toTelHref } from '../../core/phone';
 
 interface Member {
   area: string;
   name: string;
   role: string;
+  email?: string;
+  phone?: string;
 }
 
 /** Photos, bios and the owner's name are open items: placeholders stay visibly marked. */
@@ -21,4 +24,5 @@ export class TeamComponent {
   private readonly i18n = inject(I18nService);
 
   protected readonly members = computed(() => this.i18n.list<Member>('team.members'));
+  protected readonly telHref = toTelHref;
 }

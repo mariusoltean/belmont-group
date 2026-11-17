@@ -2,7 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { DestroyRef, Injectable, NgZone, PLATFORM_ID, inject, signal } from '@angular/core';
 
 /** Sections the header nav tracks, in page order. */
-export const TRACKED_SECTIONS = ['about', 'philosophy', 'products', 'angus', 'gallery'] as const;
+export const TRACKED_SECTIONS = ['about', 'philosophy', 'products', 'angus', 'team', 'gallery'] as const;
 
 /** Percentage scrolled, 0–100 with one decimal. */
 export function scrollPercent(scrollY: number, scrollHeight: number, viewportHeight: number): number {

@@ -5,4 +5,9 @@ dist
 .vscode
 handoff
 coverage
+site-releases
+.env
+content/.publish-state.json
+content/uploads/*.jpg
+content/uploads/w800/*.jpg
 *.md

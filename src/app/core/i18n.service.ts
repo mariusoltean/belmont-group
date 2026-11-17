@@ -4,17 +4,17 @@ import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core
 import { Meta, Title } from '@angular/platform-browser';
 import { firstValueFrom } from 'rxjs';
 
-export type Locale = 'ro' | 'en';
+export type Locale = 'ro' | 'en' | 'de';
 export type Dictionary = { [key: string]: unknown };
 
-export const LOCALES: readonly Locale[] = ['ro', 'en'];
+export const LOCALES: readonly Locale[] = ['ro', 'en', 'de'];
 export const DEFAULT_LOCALE: Locale = 'ro';
 export const LOCALE_STORAGE_KEY = 'belmont.locale';
 
-const OG_LOCALE: Record<Locale, string> = { ro: 'ro_RO', en: 'en_GB' };
+const OG_LOCALE: Record<Locale, string> = { ro: 'ro_RO', en: 'en_GB', de: 'de_DE' };
 
 export function isLocale(value: unknown): value is Locale {
-  return value === 'ro' || value === 'en';
+  return typeof value === 'string' && (LOCALES as readonly string[]).includes(value);
 }
 
 /** Resolves a dotted key (`hero.title`, `region.romania.p1`) in a dictionary. */

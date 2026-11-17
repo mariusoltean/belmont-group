@@ -64,6 +64,13 @@
     line-height: 26px;
     color: var(--color-on-dark);
   }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-bronze-light);
+    text-underline-offset: 4px;
+  }
 }
 
 .form {

@@ -1,0 +1,862 @@
+[
+  {
+    "file": "images/farm/all-eyes-on-me.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada Belmont privind spre noi",
+      "en": "The Belmont herd looking our way",
+      "de": "Die Belmont-Herde schaut zu uns"
+    }
+  },
+  {
+    "file": "images/farm/cows-mountain-view.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Bovine pe pășune, cu Munții Carpați înzăpeziți în zare",
+      "en": "Cattle on pasture with the snow-capped Carpathians behind",
+      "de": "Rinder auf der Weide vor den verschneiten Karpaten"
+    }
+  },
+  {
+    "file": "images/farm/black-red-angus-spring.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Angus negru și roșu, primăvara",
+      "en": "Black and Red Angus in spring",
+      "de": "Schwarze und rote Angus im Frühling"
+    }
+  },
+  {
+    "file": "images/farm/cow-and-two-calves.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Vacă Angus cu doi viței",
+      "en": "An Angus cow with two calves",
+      "de": "Eine Angus-Kuh mit zwei Kälbern"
+    }
+  },
+  {
+    "file": "images/farm/herd-moving-spring.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada mutată pe pășunea de primăvară",
+      "en": "The herd moving to spring pasture",
+      "de": "Die Herde zieht auf die Frühjahrsweide"
+    }
+  },
+  {
+    "file": "images/farm/curious-cows.jpg",
+    "width": 1312,
+    "height": 604,
+    "caption": {
+      "ro": "Vaci curioase și un vițel",
+      "en": "Curious cows and a calf",
+      "de": "Neugierige Kühe und ein Kalb"
+    }
+  },
+  {
+    "file": "images/farm/cows-to-the-river.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada în drum spre râu",
+      "en": "Moving the herd towards the river",
+      "de": "Die Herde auf dem Weg zum Fluss"
+    }
+  },
+  {
+    "file": "images/farm/breeding-bulls.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Tauri de reproducție",
+      "en": "Breeding bulls",
+      "de": "Zuchtbullen"
+    }
+  },
+  {
+    "file": "images/farm/sasaus-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășunea de la Săsăuș",
+      "en": "The pasture at Săsăuș",
+      "de": "Die Weide in Săsăuș"
+    }
+  },
+  {
+    "file": "images/farm/new-generation-calves.jpg",
+    "width": 1600,
+    "height": 740,
+    "caption": {
+      "ro": "Noua generație de viței",
+      "en": "The new generation of calves",
+      "de": "Die neue Kälbergeneration"
+    }
+  },
+  {
+    "file": "images/farm/bull-in-the-shade.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Taur la umbra unui copac",
+      "en": "A bull in the shade of a tree",
+      "de": "Ein Bulle im Schatten eines Baumes"
+    }
+  },
+  {
+    "file": "images/farm/heifers-on-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Juninci pe pășune",
+      "en": "Heifers on the pasture",
+      "de": "Färsen auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/paradise-pasture.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Cireada pe o pășune bogată",
+      "en": "The herd on rich pasture",
+      "de": "Die Herde auf saftiger Weide"
+    }
+  },
+  {
+    "file": "images/farm/red-angus-cows.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Vaci Red Angus pe pășune",
+      "en": "Red Angus cows on pasture",
+      "de": "Rote Angus-Kühe auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/calves-at-the-trough.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Viței la hrănitoare, iarna",
+      "en": "Calves at the feed trough in winter",
+      "de": "Kälber im Winter am Futtertrog"
+    }
+  },
+  {
+    "file": "images/farm/herd-resting.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada la odihnă pe pășune",
+      "en": "The herd resting on the pasture",
+      "de": "Die Herde ruht auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/sasaus-herd.jpg",
+    "width": 1200,
+    "height": 1600,
+    "caption": {
+      "ro": "Cireada pe dealurile de la Săsăuș",
+      "en": "The herd on the hills at Săsăuș",
+      "de": "Die Herde auf den Hügeln bei Săsăuș"
+    }
+  },
+  {
+    "file": "images/farm/rainy-day.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Zi ploioasă pe pășune",
+      "en": "A rainy day on the pasture",
+      "de": "Ein Regentag auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/newborn-calf.jpg",
+    "width": 900,
+    "height": 1600,
+    "caption": {
+      "ro": "Vițel nou-născut",
+      "en": "A newborn calf",
+      "de": "Ein neugeborenes Kalb"
+    }
+  },
+  {
+    "file": "images/farm/calf-in-the-straw.jpg",
+    "width": 1200,
+    "height": 1600,
+    "caption": {
+      "ro": "Vițel odihnindu-se în paie",
+      "en": "A calf resting in the straw",
+      "de": "Ein Kalb ruht im Stroh"
+    }
+  },
+  {
+    "file": "images/farm/young-calves.jpg",
+    "width": 1600,
+    "height": 736,
+    "caption": {
+      "ro": "Viței tineri pe pășune",
+      "en": "Young calves on the pasture",
+      "de": "Junge Kälber auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/cow-and-calf.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Vacă Angus cu vițelul ei",
+      "en": "An Angus cow with her calf",
+      "de": "Eine Angus-Kuh mit ihrem Kalb"
+    }
+  },
+  {
+    "file": "images/farm/cow-and-calf-autumn.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Vacă și vițel, toamna",
+      "en": "Cow and calf in autumn",
+      "de": "Kuh und Kalb im Herbst"
+    }
+  },
+  {
+    "file": "images/farm/young-red-calf.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Vițel Red Angus",
+      "en": "A Red Angus calf",
+      "de": "Ein rotes Angus-Kalb"
+    }
+  },
+  {
+    "file": "images/farm/black-calf.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Vițel Black Angus",
+      "en": "A Black Angus calf",
+      "de": "Ein schwarzes Angus-Kalb"
+    }
+  },
+  {
+    "file": "images/farm/calf-up-close.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Vițel de aproape",
+      "en": "A calf up close",
+      "de": "Ein Kalb aus der Nähe"
+    }
+  },
+  {
+    "file": "images/farm/calf-on-pasture.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Vițel pe pășune",
+      "en": "A calf on the pasture",
+      "de": "Ein Kalb auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/herd-by-the-forest.jpg",
+    "width": 738,
+    "height": 1600,
+    "caption": {
+      "ro": "Cireada la marginea pădurii",
+      "en": "The herd at the edge of the forest",
+      "de": "Die Herde am Waldrand"
+    }
+  },
+  {
+    "file": "images/farm/cow-and-calf-field.jpg",
+    "width": 1600,
+    "height": 740,
+    "caption": {
+      "ro": "Vacă cu vițel pe câmp",
+      "en": "A cow and calf in the field",
+      "de": "Kuh mit Kalb auf dem Feld"
+    }
+  },
+  {
+    "file": "images/farm/cows-at-sunset.jpg",
+    "width": 1600,
+    "height": 738,
+    "caption": {
+      "ro": "Bovine la apus",
+      "en": "Cattle at sunset",
+      "de": "Rinder bei Sonnenuntergang"
+    }
+  },
+  {
+    "file": "images/farm/cows-grazing.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Vaci la păscut",
+      "en": "Cows grazing",
+      "de": "Grasende Kühe"
+    }
+  },
+  {
+    "file": "images/farm/herd-on-the-track.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Cireada pe drumul de câmp",
+      "en": "The herd on the farm track",
+      "de": "Die Herde auf dem Feldweg"
+    }
+  },
+  {
+    "file": "images/farm/moving-the-herd.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Mutarea cirezii",
+      "en": "Moving the herd",
+      "de": "Die Herde wird umgetrieben"
+    }
+  },
+  {
+    "file": "images/farm/herd-gathered.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Cireada adunată lângă tractor",
+      "en": "The herd gathered by the tractor",
+      "de": "Die Herde am Traktor versammelt"
+    }
+  },
+  {
+    "file": "images/farm/herd-in-the-valley.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada în vale",
+      "en": "The herd in the valley",
+      "de": "Die Herde im Tal"
+    }
+  },
+  {
+    "file": "images/farm/pasture-with-a-view.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Cireada pe pășune, între copaci",
+      "en": "The herd on pasture among the trees",
+      "de": "Die Herde auf der Weide zwischen Bäumen"
+    }
+  },
+  {
+    "file": "images/farm/herd-grazing.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Cireada la păscut, departe",
+      "en": "The herd grazing in the distance",
+      "de": "Die Herde grast in der Ferne"
+    }
+  },
+  {
+    "file": "images/farm/herd-spring-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada pe pășunea de primăvară",
+      "en": "The herd on spring pasture",
+      "de": "Die Herde auf der Frühjahrsweide"
+    }
+  },
+  {
+    "file": "images/farm/herd-near-forest.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada lângă pădure, primăvara",
+      "en": "The herd by the forest in spring",
+      "de": "Die Herde am Wald im Frühling"
+    }
+  },
+  {
+    "file": "images/farm/spring-cows.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Vaci pe deal, primăvara",
+      "en": "Cows on the hill in spring",
+      "de": "Kühe am Hang im Frühling"
+    }
+  },
+  {
+    "file": "images/farm/open-pasture.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Pășune largă, cu cireada în depărtare",
+      "en": "Open pasture with the herd in the distance",
+      "de": "Weite Weide mit der Herde in der Ferne"
+    }
+  },
+  {
+    "file": "images/farm/herd-autumn.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Cireada pe pășune, toamna",
+      "en": "The herd on pasture in autumn",
+      "de": "Die Herde auf der Weide im Herbst"
+    }
+  },
+  {
+    "file": "images/farm/autumn-pasture.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Toamnă pe pășune",
+      "en": "Autumn on the pasture",
+      "de": "Herbst auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/autumn-hills.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Pășune de toamnă, cu munții în zare",
+      "en": "Autumn pasture with the mountains behind",
+      "de": "Herbstweide vor den Bergen"
+    }
+  },
+  {
+    "file": "images/farm/herd-in-november.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada pe pășune, în noiembrie",
+      "en": "The herd on pasture in November",
+      "de": "Die Herde im November auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/bull-and-old-tree.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Taur lângă un copac bătrân",
+      "en": "A bull beside an old tree",
+      "de": "Ein Bulle neben einem alten Baum"
+    }
+  },
+  {
+    "file": "images/farm/feeding-time.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Hrănirea animalelor",
+      "en": "Feeding time",
+      "de": "Fütterungszeit"
+    }
+  },
+  {
+    "file": "images/farm/handling-pens.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Bovine în țarcul de manipulare",
+      "en": "Cattle in the handling pens",
+      "de": "Rinder im Behandlungspferch"
+    }
+  },
+  {
+    "file": "images/farm/veterinary-care.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Îngrijire veterinară pe pășune",
+      "en": "Veterinary care on the pasture",
+      "de": "Tierärztliche Versorgung auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/sunset-on-the-pasture.jpg",
+    "width": 1600,
+    "height": 738,
+    "caption": {
+      "ro": "Apus peste pășune",
+      "en": "Sunset over the pasture",
+      "de": "Sonnenuntergang über der Weide"
+    }
+  },
+  {
+    "file": "images/farm/evening-pasture.jpg",
+    "width": 1600,
+    "height": 738,
+    "caption": {
+      "ro": "Seara pe pășune",
+      "en": "Evening on the pasture",
+      "de": "Abend auf der Weide"
+    }
+  },
+  {
+    "file": "images/farm/sun-over-the-valley.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Raze de soare peste vale",
+      "en": "Sunbeams over the valley",
+      "de": "Sonnenstrahlen über dem Tal"
+    }
+  },
+  {
+    "file": "images/farm/autumn-evening.jpg",
+    "width": 1600,
+    "height": 738,
+    "caption": {
+      "ro": "Seară de toamnă pe dealuri",
+      "en": "An autumn evening on the hills",
+      "de": "Herbstabend auf den Hügeln"
+    }
+  },
+  {
+    "file": "images/farm/sunset-clouds.jpg",
+    "width": 1600,
+    "height": 738,
+    "caption": {
+      "ro": "Soarele printre nori",
+      "en": "The sun breaking through the clouds",
+      "de": "Die Sonne bricht durch die Wolken"
+    }
+  },
+  {
+    "file": "images/farm/colun-mountain-view.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Vedere spre munți de la Colun",
+      "en": "Mountain view from Colun",
+      "de": "Blick auf die Berge von Colun"
+    }
+  },
+  {
+    "file": "images/farm/colun-pastures.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășunile de la Colun",
+      "en": "The pastures at Colun",
+      "de": "Die Weiden bei Colun"
+    }
+  },
+  {
+    "file": "images/farm/valley-and-mountains.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Valea și munții, într-o zi înnorată",
+      "en": "The valley and mountains on a cloudy day",
+      "de": "Tal und Berge an einem bewölkten Tag"
+    }
+  },
+  {
+    "file": "images/farm/green-valley.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Vale verde, cu munții în zare",
+      "en": "A green valley with the mountains behind",
+      "de": "Ein grünes Tal vor den Bergen"
+    }
+  },
+  {
+    "file": "images/farm/mountains-and-pasture.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Pășune și munți înzăpeziți",
+      "en": "Pasture and snow-capped mountains",
+      "de": "Weide und schneebedeckte Berge"
+    }
+  },
+  {
+    "file": "images/farm/winter-is-coming.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Drum de câmp spre munții înzăpeziți",
+      "en": "A farm track towards the snowy mountains",
+      "de": "Ein Feldweg zu den verschneiten Bergen"
+    }
+  },
+  {
+    "file": "images/farm/track-to-the-mountains.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Drumul spre munți, primăvara",
+      "en": "The track to the mountains in spring",
+      "de": "Der Weg zu den Bergen im Frühling"
+    }
+  },
+  {
+    "file": "images/farm/pasture-cloudy-sky.jpg",
+    "width": 1600,
+    "height": 902,
+    "caption": {
+      "ro": "Pășune sub cer înnorat",
+      "en": "Pasture under a cloudy sky",
+      "de": "Weide unter bewölktem Himmel"
+    }
+  },
+  {
+    "file": "images/farm/paradise-for-cows.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășune întinsă, cu munții în zare",
+      "en": "Wide pasture with the mountains behind",
+      "de": "Weite Weide vor den Bergen"
+    }
+  },
+  {
+    "file": "images/farm/panoramic-view.jpg",
+    "width": 1600,
+    "height": 720,
+    "caption": {
+      "ro": "Panoramă de toamnă peste dealuri",
+      "en": "An autumn panorama over the hills",
+      "de": "Herbstpanorama über den Hügeln"
+    }
+  },
+  {
+    "file": "images/farm/rich-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășune bogată pentru vacile Angus",
+      "en": "Rich pasture for the Angus cows",
+      "de": "Saftige Weide für die Angus-Kühe"
+    }
+  },
+  {
+    "file": "images/farm/farm-track.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Drum de câmp printre pășuni",
+      "en": "A farm track through the pastures",
+      "de": "Ein Feldweg durch die Weiden"
+    }
+  },
+  {
+    "file": "images/farm/lush-spring-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășune bogată, primăvara",
+      "en": "Lush pasture in spring",
+      "de": "Üppige Weide im Frühling"
+    }
+  },
+  {
+    "file": "images/farm/summer-meadow.jpg",
+    "width": 1600,
+    "height": 1204,
+    "caption": {
+      "ro": "Fâneață în plină vară",
+      "en": "A meadow in high summer",
+      "de": "Eine Wiese im Hochsommer"
+    }
+  },
+  {
+    "file": "images/farm/herd-on-the-hill.jpg",
+    "width": 1200,
+    "height": 1600,
+    "caption": {
+      "ro": "Cireada pe deal",
+      "en": "The herd on the hill",
+      "de": "Die Herde am Hang"
+    }
+  },
+  {
+    "file": "images/farm/hill-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășune pe deal, cu valea în zare",
+      "en": "Hillside pasture above the valley",
+      "de": "Hangweide über dem Tal"
+    }
+  },
+  {
+    "file": "images/farm/summer-pasture.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășune verde de vară",
+      "en": "Green summer pasture",
+      "de": "Grüne Sommerweide"
+    }
+  },
+  {
+    "file": "images/farm/pasture-summer-sky.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Pășune sub cer de vară",
+      "en": "Pasture under a summer sky",
+      "de": "Weide unter Sommerhimmel"
+    }
+  },
+  {
+    "file": "images/farm/herd-and-shelters.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Cireada și adăposturile de pe pășune",
+      "en": "The herd and the pasture shelters",
+      "de": "Die Herde und die Weideunterstände"
+    }
+  },
+  {
+    "file": "images/farm/hay-production.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Producția de fân, cu munții în zare",
+      "en": "Hay making with the mountains behind",
+      "de": "Heuernte vor den Bergen"
+    }
+  },
+  {
+    "file": "images/farm/hay-bales-field.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Baloți de fân pe câmp",
+      "en": "Hay bales in the field",
+      "de": "Heuballen auf dem Feld"
+    }
+  },
+  {
+    "file": "images/farm/hay-rows.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Rânduri de fân cosit",
+      "en": "Rows of cut hay",
+      "de": "Reihen von gemähtem Heu"
+    }
+  },
+  {
+    "file": "images/farm/hay-bales-tractor.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Strângerea baloților de fân",
+      "en": "Collecting the hay bales",
+      "de": "Die Heuballen werden eingesammelt"
+    }
+  },
+  {
+    "file": "images/farm/hay-aerial-mountains.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Fânețe văzute de sus, cu munții în zare",
+      "en": "Hay meadows from above, with the mountains behind",
+      "de": "Heuwiesen von oben, vor den Bergen"
+    }
+  },
+  {
+    "file": "images/farm/hay-aerial-hills.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Fânețe pe dealuri, văzute de sus",
+      "en": "Hay meadows on the hills from above",
+      "de": "Heuwiesen auf den Hügeln von oben"
+    }
+  },
+  {
+    "file": "images/farm/hay-aerial-strip.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Fâneață între păduri",
+      "en": "A hay meadow between the woods",
+      "de": "Eine Heuwiese zwischen den Wäldern"
+    }
+  },
+  {
+    "file": "images/farm/hay-field-mountains.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Fân cosit, cu munții în zare",
+      "en": "Cut hay with the mountains behind",
+      "de": "Gemähtes Heu vor den Bergen"
+    }
+  },
+  {
+    "file": "images/farm/hay-windrows.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Brazde de fân",
+      "en": "Hay windrows",
+      "de": "Heuschwaden"
+    }
+  },
+  {
+    "file": "images/farm/hay-aerial-valley.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Fânețe în vale, văzute de sus",
+      "en": "Hay meadows in the valley from above",
+      "de": "Heuwiesen im Tal von oben"
+    }
+  },
+  {
+    "file": "images/farm/hay-valley-view.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Fân cosit deasupra văii",
+      "en": "Cut hay above the valley",
+      "de": "Gemähtes Heu über dem Tal"
+    }
+  },
+  {
+    "file": "images/farm/hay-curves.jpg",
+    "width": 1600,
+    "height": 900,
+    "caption": {
+      "ro": "Rânduri de fân pe deal",
+      "en": "Rows of hay on the hillside",
+      "de": "Heureihen am Hang"
+    }
+  },
+  {
+    "file": "images/farm/clearing-the-land.jpg",
+    "width": 1600,
+    "height": 1200,
+    "caption": {
+      "ro": "Curățarea terenului pentru pășune",
+      "en": "Clearing the land for pasture",
+      "de": "Rodung des Landes für die Weide"
+    }
+  }
+]

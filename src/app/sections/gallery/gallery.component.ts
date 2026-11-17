@@ -14,19 +14,12 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import galleryData from '../../data/gallery.json';
 import { I18nService } from '../../core/i18n.service';
 import { RevealDirective } from '../../core/reveal.directive';
 import { TranslatePipe } from '../../core/t.pipe';
+import { GALLERY, thumbnailOf } from '../../core/content';
 
-export interface GalleryEntry {
-  /** Path under `public/`, e.g. `images/photo-01.jpg`. */
-  file: string;
-  /** Index into the `gallery.photos` captions. */
-  captionIndex: number;
-}
-
-export const GALLERY: readonly GalleryEntry[] = galleryData;
+export { GALLERY, thumbnailOf };
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
@@ -55,17 +48,16 @@ export class GalleryComponent {
   /** Index of the photo open in the lightbox, or -1. */
   readonly openIndex = signal(-1);
 
-  private readonly captions = computed(() => this.i18n.list<string>('gallery.photos'));
-
   readonly photos = computed(() => {
-    const captions = this.captions();
+    const locale = this.i18n.locale();
     const openLabel = this.i18n.text('gallery.open');
     return GALLERY.slice(0, this.shown()).map((entry) => {
-      const caption = captions[entry.captionIndex] ?? '';
+      const caption = entry.caption[locale] || entry.caption.ro || '';
       return {
         src: entry.file,
-        thumb: entry.file.replace('images/', 'images/w800/'),
-        medium: entry.file.replace('images/', 'images/w1200/'),
+        thumb: thumbnailOf(entry.file),
+        width: entry.width,
+        height: entry.height,
         caption,
         openLabel: `${openLabel}: ${caption}`,
       };

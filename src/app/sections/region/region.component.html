@@ -4,12 +4,12 @@
       <article class="article">
         <img
           class="photo"
-          [src]="'images/w1200/' + article.image"
-          [attr.srcset]="'images/w800/' + article.image + ' 800w, images/w1200/' + article.image + ' 1200w'"
+          [src]="article.image.file"
+          [attr.srcset]="article.srcset"
           sizes="(min-width: 1040px) 544px, calc(100vw - 40px)"
           [alt]="article.key + '.imageAlt' | t"
-          [width]="article.width"
-          [height]="article.height"
+          [width]="article.image.width"
+          [height]="article.image.height"
           loading="lazy"
           decoding="async"
         />

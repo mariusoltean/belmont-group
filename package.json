@@ -4,10 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node scripts/write-sitemap.ts dist/belmont-group/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:dist": "http-server dist/belmont-group/browser -p 4300 -c-1"
+    "serve:dist": "http-server dist/belmont-group/browser -p 4300 -c-1",
+    "admin": "node admin/server.ts",
+    "admin:hash": "node admin/hash-password.ts",
+    "test:admin": "node --test admin/",
+    "typecheck:admin": "tsc -p admin/tsconfig.json",
+    "admin:dev": "SERVE_SITE=1 PORT=4310 node --env-file=.env admin/server.ts"
   },
   "private": true,
   "packageManager": "npm@11.19.0",

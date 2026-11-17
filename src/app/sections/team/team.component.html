@@ -14,6 +14,16 @@
             <h3 class="name">{{ member.name }}</h3>
             <p class="role">{{ member.role }}</p>
             <p class="bio">{{ 'team.bioPlaceholder' | t }}</p>
+            @if (member.email || member.phone) {
+              <p class="reach">
+                @if (member.email) {
+                  <a [href]="'mailto:' + member.email">{{ member.email }}</a>
+                }
+                @if (member.phone) {
+                  <a [href]="telHref(member.phone)">{{ member.phone }}</a>
+                }
+              </p>
+            }
           </div>
         </article>
       }

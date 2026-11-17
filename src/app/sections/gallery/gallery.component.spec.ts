@@ -2,10 +2,10 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import ro from '../../../../public/i18n/ro.json';
-import en from '../../../../public/i18n/en.json';
+import ro from '../../../../content/i18n/ro.json';
+import en from '../../../../content/i18n/en.json';
 import { I18nService } from '../../core/i18n.service';
-import { GalleryComponent } from './gallery.component';
+import { GALLERY, GalleryComponent, thumbnailOf } from './gallery.component';
 
 describe('GalleryComponent', () => {
   let fixture: ComponentFixture<GalleryComponent>;
@@ -44,19 +44,30 @@ describe('GalleryComponent', () => {
     el.remove();
   });
 
-  it('shows 8 photos, then 4 more per click up to 16, then hides the button', async () => {
+  it('shows 8 photos, then 4 more per click until all are shown, then hides the button', async () => {
+    const total = GALLERY.length;
     expect(thumbs().length).toBe(8);
-    expect(status()).toBe('8 din 16 fotografii');
+    expect(status()).toBe(`8 din ${total} fotografii`);
 
     moreButton()!.click();
     await fixture.whenStable();
     expect(thumbs().length).toBe(12);
-    expect(status()).toBe('12 din 16 fotografii');
+    expect(status()).toBe(`12 din ${total} fotografii`);
 
-    moreButton()!.click();
-    await fixture.whenStable();
-    expect(thumbs().length).toBe(16);
-    expect(moreButton()).toBeNull();
+    while (moreButton()) {
+      moreButton()!.click();
+      await fixture.whenStable();
+    }
+    expect(thumbs().length).toBe(total);
+    expect(status()).toBe(`${total} din ${total} fotografii`);
+  });
+
+  it('has a caption in every language for every photo, and uses 800px thumbnails', async () => {
+    for (const entry of GALLERY) {
+      expect(entry.caption.ro && entry.caption.en && entry.caption.de).toBeTruthy();
+    }
+    expect(thumbnailOf('images/farm/cows.jpg')).toBe('images/farm/w800/cows.jpg');
+    expect(el.querySelector('.thumb img')!.getAttribute('src')).toBe(thumbnailOf(GALLERY[0].file));
   });
 
   it('honours the initialCount and pageSize inputs', async () => {
@@ -70,13 +81,13 @@ describe('GalleryComponent', () => {
   });
 
   it('labels thumbnails with translated captions and follows the locale', async () => {
-    expect(thumbs()[0].getAttribute('aria-label')).toBe('Mărește fotografia: Cireada Belmont Angus');
+    expect(thumbs()[0].getAttribute('aria-label')).toBe(`${ro.gallery.open}: ${GALLERY[0].caption.ro}`);
     const switching = i18n.setLocale('en');
     http.expectOne('i18n/en.json').flush(en);
     await switching;
     await fixture.whenStable();
-    expect(thumbs()[0].getAttribute('aria-label')).toBe(`${en.gallery.open}: ${en.gallery.photos[0]}`);
-    expect(status()).toBe(`8 ${en.gallery.countOf} 16 ${en.gallery.countUnit}`);
+    expect(thumbs()[0].getAttribute('aria-label')).toBe(`${en.gallery.open}: ${GALLERY[0].caption.en}`);
+    expect(status()).toBe(`8 ${en.gallery.countOf} ${GALLERY.length} ${en.gallery.countUnit}`);
   });
 
   it('opens a lightbox that moves focus in, locks scroll and wraps prev/next', async () => {
@@ -97,7 +108,7 @@ describe('GalleryComponent', () => {
     expect(dialog()!.textContent).toContain('1 / 8');
     await key('ArrowRight');
     expect(dialog()!.textContent).toContain('2 / 8');
-    expect(dialog()!.querySelector('img')!.getAttribute('alt')).toBe(ro.gallery.photos[1]);
+    expect(dialog()!.querySelector('img')!.getAttribute('alt')).toBe(GALLERY[1].caption.ro);
   });
 
   it('closes on Escape, unlocks scroll and returns focus to the thumbnail', async () => {

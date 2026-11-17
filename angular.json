@@ -27,6 +27,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "content/i18n",
+                "output": "i18n"
+              },
+              {
+                "glob": "**/*.jpg",
+                "input": "content/uploads",
+                "output": "uploads"
               }
             ],
             "styles": [
